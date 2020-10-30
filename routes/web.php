@@ -20,3 +20,7 @@ Route::get('/', function () {
 
 // Route::get('/peserta', 'App\Http\Controllers\PesertaController@index');
 Route::get('/peserta', [PesertaController::class, 'index']);
+Route::post('/peserta/create', [PesertaController::class, 'create']);
+Route::get('/peserta/{id}/edit', [PesertaController::class, 'edit']);
+Route::post('/peserta/{id}/update', [PesertaController::class, 'update']);
+Route::get('/peserta/{id}/delete', [PesertaController::class, 'delete']);

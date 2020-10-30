@@ -1,86 +1,199 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIASQI</title>
+@extends('layouts.app')
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-</head>
-<body>
-
-    <div class="container">
+@section('content')
+        @if(session('sukses'))
+            <div class="alert alert-success" role="alert">
+            {{session('sukses')}}
+            </div>
+        @endif
         <div class="row">
         <div class="col-6">
             <h1>Data Peserta</h1>
         </div>
         <div class="col-6">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#exampleModal">
             Tambah Data Peserta
             </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-                </div>
-            </div>
-            </div>
+           
         </div>
-            <table class="table">
-                <tr>
-                    <th>NIS</th>
-                    <th>NAMA</th>
-                    <th>PRODI</th>
-                    <th>FAKULTAS</th>
-                    <th>INSTANSI</th>
-                    <th>ANGKATAN</th>
-                    <th>NO HP</th>
-                    <th>JENIS KELAMIN</th>
-                    <th>LEVEL</th>
-                    <th>SEMESTER MASUK</th>
-                    <th>STATUS</th>
-                    <!-- <th>USER ID</th> -->
-                </tr>
-                @foreach($data_peserta as $peserta)
-                <tr>
-                    <td> {{ $peserta -> nis }} </td>
-                    <td> {{ $peserta -> nama }} </td>
-                    <td> {{ $peserta -> prodi }} </td>
-                    <td> {{ $peserta -> fakultas }} </td>
-                    <td> {{ $peserta -> instansi }} </td>
-                    <td> {{ $peserta -> angkatan }} </td>
-                    <td> {{ $peserta -> no_hp }} </td>
-                    <td> {{ $peserta -> jenis_kelamin }} </td>
-                    <td> {{ $peserta -> level }} </td>
-                    <td> {{ $peserta -> semester_masuk }} </td>
-                    <td> {{ $peserta -> status }} </td>
-                    <!-- <td> {{ $peserta -> user_id }} </td> -->
-                </tr>
-                @endforeach
-            </table>
-
         </div>
+            <div class= "table-responsive">
+                <table class="table table-sm table-hover table-striped table-bordered">
+                    <tr>
+                    <thead class="thead-dark text-center">
+                        <th>NIS</th>
+                        <th>Nama</th>
+                        <th>Prodi</th>
+                        <th>Fakultas</th>
+                        <th>Instansi</th>
+                        <th>Angkatan</th>
+                        <th>NO HP</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Level</th>
+                        <th>Semester Masuk</th>
+                        <th>Status</th>
+                        <!-- <th>USER ID</th> -->
+                        <th>Aksi</th>
+
+                    </thead>
+                    </tr>
+                    @foreach($data_peserta as $peserta)
+                    <tr>
+                        <td class="text-center"> {{ $peserta -> nis }} </td>
+                        <td> {{ $peserta -> nama }} </td>
+                        <td class="text-center"> {{ $peserta -> prodi }} </td>
+                        <td class="text-center"> {{ $peserta -> fakultas }} </td>
+                        <td class="text-center"> {{ $peserta -> instansi }} </td>
+                        <td class="text-center"> {{ $peserta -> angkatan }} </td>
+                        <td> {{ $peserta -> no_hp }} </td>
+                        <td class="text-center"> {{ $peserta -> jenis_kelamin }} </td>
+                        <td class="text-center"> {{ $peserta -> level }} </td>
+                        <td class="text-center"> {{ $peserta -> semester_masuk }} </td>
+                        <td class="text-center"> {{ $peserta -> status }} </td>
+                        <!-- <td> {{ $peserta -> user_id }} </td> -->
+                        <td> 
+                        <a href="/peserta/{{$peserta->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/peserta/{{$peserta->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Apakah yakin ingin menghapus data?')">Hapus</a>                         
+                        </td>
+                    </tr>
+                    @endforeach
+                </table>        
+            </div>
+
+ <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Data Peserta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
     </div>
+    <div class="modal-body">
+        <form action="peserta/create" method="POST" >
+            @csrf
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <label for="nis" class="col-4 col-form-label text-right"><strong>NIS :</strong></label>
+                        <div class="col-8">
+                        <input type="text" name="nis" class="form-control form-control-sm" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="nama" class="col-4 col-form-label text-right"><strong>Nama :</strong></label>
+                        <div class="col-8">
+                        <input type="text" name="nama" class="form-control form-control-sm" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="prodi" class="col-4 col-form-label text-right"><strong>Prodi :</strong></label>
+                        <div class="col-8">
+                        <input type="text" name="prodi" class="form-control form-control-sm" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="fakultas" class="col-4 col-form-label text-right"><strong>Fakultas :</strong></label>
+                        <div class="col-8">
+                            <select id="fakultas" class="form-control form-control-sm" name="fakultas" required>
+                                <option selected>Pilih</option>
+                                <option value="FIP">FIP</option>
+                                <option value="FT">FT</option>
+                                <option value="FMIPA">FMIPA</option>
+                                <option value="FE">FE</option>
+                                <option value="FBS">FBS</option>
+                                <option value="FIS">FIS</option>
+                                <option value="FIK">FIK</option>
+                                <option value="FPPsi">FPPsi</option>
+                                <option value="Umum">Umum</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="instansi" class="col-4 col-form-label text-right"><strong>Instansi :</strong></label>
+                        <div class="col-8">
+                            <select id="instansi" class="form-control form-control-sm" name="instansi" required>
+                                <option selected>Pilih</option>
+                                <option value="UNJ">UNJ</option>
+                                <option value="Umum">Umum</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="angkatan" class="col-4 col-form-label text-right"><strong>Angkatan :</strong></label>
+                        <div class="col-8">
+                        <input type="text" name="angkatan" class="form-control form-control-sm" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="no_hp" class="col-4 col-form-label text-right"><strong>No Hp :</strong></label>
+                        <div class="col-8">
+                        <input type="text" name="no_hp" class="form-control form-control-sm" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="jenis_kelamin" class="col-4 col-form-label text-right"><strong>Jenis Kelamin :</strong></label>
+                        <div class="col-8">
+                            <select id="jenis_kelamin" class="form-control form-control-sm" name="jenis_kelamin" required>
+                                <option selected>Pilih</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="level" class="col-4 col-form-label text-right"><strong>Level :</strong></label>
+                        <div class="col-8">
+                            <select id="level" class="form-control form-control-sm" name="level" required>
+                                <option selected>Pilih</option>
+                                <option value="1">Pra Tahsin 1</option>
+                                <option value="2">Pra Tahsin 2</option>
+                                <option value="3">Tahsin 1</option>
+                                <option value="4">Tahsin 2</option>
+                                <option value="5">Tahsin 3</option>
+                                <option value="6">Tahsin 4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="semester_masuk" class="col-4 col-form-label text-right"><strong>Semester Masuk :</strong></label>
+                        <div class="col-8">
+                        <input type="text" name="semester_masuk" class="form-control form-control-sm" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="status" class="col-4 col-form-label text-right"><strong>Status :</strong></label>
+                        <div class="col-8">
+                            <select id="status" class="form-control form-control-sm" name="status" required>
+                                <option selected>Pilih</option>
+                                <option value="Aktif">Aktif</option>
+                                <option value="Non Aktif">Non Aktif</option>
+                                <option value="Lulus">Lulus</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="userid" class="col-4 col-form-label text-right"><strong>User Id :</strong></label>
+                        <div class="col-8">
+                        <input type="text" name="userid" class="form-control form-control-sm" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                </div> -->
+            </div>                
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-sm btn-primary">Tambah</button>
+    </div>
+    </form>
+    </div>
+</div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
-</html>
+@endsection
