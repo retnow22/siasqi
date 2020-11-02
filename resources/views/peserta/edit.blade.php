@@ -118,7 +118,7 @@
                             <div class="col-2"></div>
                             <div class="col-10">
                             <a href="/peserta" class="btn btn-secondary btn-sm">Batal</a>
-                            <button type="submit" class="btn btn-sm btn-warning">Simpan</button>
+                            <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Data akan diperbaharui')">Simpan</button>
                             </div>
                         </div>
                     </div>

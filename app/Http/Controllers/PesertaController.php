@@ -38,7 +38,7 @@ class PesertaController extends Controller
        
         $peserta->update($request->all());
        
-        return redirect('/peserta')->with('sukses','Data berhasil diperbarui!');
+        return redirect('/peserta')->with('sukses','Data berhasil diperbaharui!');
     }
 
     public function delete($id)

@@ -1,24 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-        @if(session('sukses'))
+@if(session('sukses'))
             <div class="alert alert-success" role="alert">
             {{session('sukses')}}
             </div>
-        @endif
-        <div class="row">
-        <div class="col-6">
-            <h1>Data Peserta</h1>
-        </div>
-        <div class="col-6">
+@endif
+<div class="row">
+    <div class="col-md-12">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Data Siswa</h3>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#exampleModal">
-            Tambah Data Peserta
-            </button>
-           
+
         </div>
-        </div>
-            <div class= "table-responsive">
+        <div class="panel-body">
+            <div class="row">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-plus"></i> Tambah Data
+                </button>          
+                <br> 
+                <div class= "table-responsive">
                 <table class="table table-sm table-hover table-striped table-bordered">
                     <tr>
                     <thead class="thead-dark text-center">
@@ -54,15 +56,20 @@
                         <!-- <td> {{ $peserta -> user_id }} </td> -->
                         <td> 
                         <a href="/peserta/{{$peserta->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="/peserta/{{$peserta->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Apakah yakin ingin menghapus data?')">Hapus</a>                         
+                        <a href="/peserta/{{$peserta->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">Hapus</a>                         
                         </td>
                     </tr>
                     @endforeach
-                </table>        
+                </table>
+                </div>
             </div>
+        </div>
+    </div>
+    </div>
+</div>
 
  <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
     <div class="modal-header">
@@ -195,5 +202,70 @@
     </div>
 </div>
 </div>
+
+@stop
+
+@section('content1')
+        @if(session('sukses'))
+            <div class="alert alert-success" role="alert">
+            {{session('sukses')}}
+            </div>
+        @endif
+        <div class="row">
+        <div class="col-6">
+            <h1>Data Peserta</h1>
+        </div>
+        <div class="col-6">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#exampleModal">
+            Tambah Data Peserta
+            </button>
+           
+        </div>
+        </div>
+            <div class= "table-responsive">
+                <table class="table table-sm table-hover table-striped table-bordered">
+                    <tr>
+                    <thead class="thead-dark text-center">
+                        <th>NIS</th>
+                        <th>Nama</th>
+                        <th>Prodi</th>
+                        <th>Fakultas</th>
+                        <th>Instansi</th>
+                        <th>Angkatan</th>
+                        <th>NO HP</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Level</th>
+                        <th>Semester Masuk</th>
+                        <th>Status</th>
+                        <!-- <th>USER ID</th> -->
+                        <th>Aksi</th>
+
+                    </thead>
+                    </tr>
+                    @foreach($data_peserta as $peserta)
+                    <tr>
+                        <td class="text-center"> {{ $peserta -> nis }} </td>
+                        <td> {{ $peserta -> nama }} </td>
+                        <td class="text-center"> {{ $peserta -> prodi }} </td>
+                        <td class="text-center"> {{ $peserta -> fakultas }} </td>
+                        <td class="text-center"> {{ $peserta -> instansi }} </td>
+                        <td class="text-center"> {{ $peserta -> angkatan }} </td>
+                        <td> {{ $peserta -> no_hp }} </td>
+                        <td class="text-center"> {{ $peserta -> jenis_kelamin }} </td>
+                        <td class="text-center"> {{ $peserta -> level }} </td>
+                        <td class="text-center"> {{ $peserta -> semester_masuk }} </td>
+                        <td class="text-center"> {{ $peserta -> status }} </td>
+                        <!-- <td> {{ $peserta -> user_id }} </td> -->
+                        <td> 
+                        <a href="/peserta/{{$peserta->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/peserta/{{$peserta->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">Hapus</a>                         
+                        </td>
+                    </tr>
+                    @endforeach
+                </table>        
+            </div>
+
+
 
 @endsection
