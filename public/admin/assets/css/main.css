@@ -67,7 +67,7 @@ footer {
   width: 260px;
   height: 100%;
   float: left;
-  background-color: #2B333E;
+  background-color: #2974ff;
   position: fixed;
   left: 0; }
 
@@ -85,12 +85,12 @@ footer {
 
 #wrapper #sidebar-nav,
 #wrapper .main {
-  padding-top: 80px; }
+  padding-top: 60px; }
 
 @media screen and (max-width: 767px) {
   #wrapper #sidebar-nav,
   #wrapper .main {
-    padding-top: 130px; } }
+    padding-top: 60px; } }
 
 .layout-fullwidth #wrapper .sidebar {
   left: -260px; }
@@ -166,36 +166,39 @@ html.fullscreen-bg #wrapper {
   padding: 0;
   margin: 0;
   border: none;
-  background-color: #fff; }
+  color: #fff;
+  font-size: 24px;
+  background-color: #343a40; }
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    background-color: #fafafa; }
+    background-color: #343a40; }
   .navbar-default .navbar-toggle, .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-    background-color: #f8f8f8; }
+    background-color: #343a40; }
   .navbar-default .brand {
     float: left;
-    padding: 30px 39px;
-    background-color: #fff; }
+    padding: 10px 10px;
+    background-color: #343a40;
+    color: #fff; }
   @media screen and (max-width: 1024px) {
     .navbar-default .brand {
-      padding-left: 30px;
-      padding-right: 15px; } }
+      padding-left: 10px;
+      padding-right: 10px; 
+      color: #fff;} }
   @media screen and (max-width: 992px) {
     .navbar-default .brand {
-      display: none; } }
-  @media screen and (max-width: 640px) {
+      float: center; } }
+  /* @media screen and (max-width: 640px) {
     .navbar-default #navbar-menu {
-      float: right; } }
+      float: center; } } */
 
 .navbar-btn {
   float: left;
-  padding: 16px 0; }
+  padding: 5px 0; }
   .navbar-btn button {
-    font-size: 24px;
     padding: 4px 8px;
     line-height: .7;
-    border: none;
+    border:  none;
     background: none;
-    outline: none; }
+    outline:  none; }
   @media screen and (max-width: 640px) {
     .navbar-btn {
       padding-left: 0; } }
@@ -230,20 +233,25 @@ html.fullscreen-bg #wrapper {
   *vertical-align: auto;
   *zoom: 1;
   *display: inline;
-  padding-top: 28px;
-  padding-bottom: 28px;
-  position: relative; }
+  padding-top: 5px;
+  padding-bottom: 5px;
+  position: relative; 
+  color: #fff;
+  font-size: 12px;}
   .navbar-nav .icon-menu .badge {
     position: absolute;
-    top: 22px;
-    right: 16px; }
+    top: 5px;
+    right: 5px; }
 
 .navbar-nav > li > a {
-  padding: 28px 20px; }
+  padding: 15px 5px; 
+  color: #fff;
+  font-size: 16px;}
   .navbar-nav > li > a > i {
     font-size: 22px;
     margin-right: 2px;
-    vertical-align: middle; }
+    vertical-align: middle; 
+    color: #d4d4d4}
     .navbar-nav > li > a > i.icon-submenu {
       margin-left: 2px;
       margin-right: 0;
@@ -252,43 +260,50 @@ html.fullscreen-bg #wrapper {
       top: 2px; }
   .navbar-nav > li > a > span {
     position: relative;
-    top: 2px; }
+    top: 2px; 
+    color:#d4d4d4;}
   .navbar-nav > li > a img {
     width: 22px;
-    margin-right: 2px; }
+    margin-right: 2px; 
+    color: #fff;}
 
 .navbar-nav > li > .dropdown-menu {
   padding: 0;
   min-width: 200px; }
 
 .navbar-nav .dropdown-menu {
-  border-top: 2px solid #ACB0B5; }
+  border-top: 2px solid #343a40; }
 
 .navbar-nav .dropdown-menu > li > a {
-  padding: 10px 20px; }
+  padding: 10px 20px; 
+  background-color: #343a40;
+  color: #d4d4d4}
   .navbar-nav .dropdown-menu > li > a:hover, .navbar-nav .dropdown-menu > li > a:focus {
-    background-color: #fafafa; }
+    background-color: #8b8c8d; }
   .navbar-nav .dropdown-menu > li > a span,
   .navbar-nav .dropdown-menu > li > a i {
     vertical-align: middle; }
 
 @media screen and (min-width: 768px) {
   .navbar-nav.navbar-right {
-    margin-right: 0; } }
+    margin-right: 0; 
+    color:#d4d4d4;} }
 
 @media screen and (max-width: 767px) {
   .navbar-nav {
     width: 100%;
-    margin: 0; }
+    margin: 0; 
+    color:#d4d4d4;}
     .navbar-nav > li {
       display: table-cell;
       width: 1%;
       position: inherit;
-      text-align: center; }
+      text-align: center; 
+      color:#d4d4d4;}
     .navbar-nav > li > a {
-      padding: 15px 20px; }
-      .navbar-nav > li > a span:not(.badge),
-      .navbar-nav > li > a .icon-submenu {
+      padding: 20px 20px; 
+      color:#d4d4d4;}
+      .navbar-nav > li > a span:not(.badge) {
         display: none; }
     .navbar-nav .open .dropdown-menu {
       -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -297,15 +312,19 @@ html.fullscreen-bg #wrapper {
       position: absolute;
       width: 100%;
       margin-top: 3px;
-      background-color: #fff; }
+      color:#d4d4d4;
+      background-color: #8b8c8d; }
     .navbar-nav .open .dropdown-menu > li > a {
-      padding: 10px 15px; }
+      padding: 10px 15px; 
+      color:#d4d4d4;}
     .navbar-nav .icon-menu {
       padding-top: 15px;
-      padding-bottom: 15px; }
+      padding-bottom: 15px;
+      color:#d4d4d4; }
       .navbar-nav .icon-menu .badge {
         top: 10px;
-        right: 15px; } }
+        right: 15px; 
+        color:#d4d4d4;} }
 
 .navbar-toggle {
   padding: 5px 8px;
@@ -344,7 +363,7 @@ ul.notifications > li {
   -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  border-color: #eaeaea; }
+  border-color: #343a40; }
   .dropdown-menu > li > a {
     color: #676a6d; }
   .dropdown-menu > li i {
@@ -361,16 +380,16 @@ ul.notifications > li {
   z-index: 9; }
   .sidebar .nav > li > a {
     padding: 18px 30px;
-    color: #AEB7C2;
+    color: #fff;
     border-left: 5px solid transparent; }
     .sidebar .nav > li > a:hover, .sidebar .nav > li > a:focus, .sidebar .nav > li > a.active {
-      color: #fff;
+      color: #accdff;
       background-color: transparent; }
       .sidebar .nav > li > a:hover i, .sidebar .nav > li > a:focus i, .sidebar .nav > li > a.active i {
         color: #00AAFF; }
     .sidebar .nav > li > a:focus, .sidebar .nav > li > a.active {
-      background-color: #252c35;
-      border-left-color: #00AAFF; }
+      background-color: #6899f3;
+      border-left-color: #7ad3ff; }
     .sidebar .nav > li > a[data-toggle="collapse"] .icon-submenu {
       display: inline-block;
       vertical-align: middle;
@@ -413,7 +432,7 @@ ul.notifications > li {
       position: relative;
       top: -2px; }
     .sidebar .nav .nav {
-      background-color: #252c35; }
+      background-color: #2974ff; }
       .sidebar .nav .nav > li > a {
         padding-left: 60px;
         padding-top: 10px;
