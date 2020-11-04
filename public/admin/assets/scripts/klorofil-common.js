@@ -63,6 +63,11 @@ $(document).ready(function() {
 			height: '95%',
 			wheelStep: 2,
 		});
+	// active sidebar??
+	$('nav .nav li a').on('click', function() {
+		$('nav .nav li a').removeClass('active');
+		$(this).addClass('active');
+	});
 	}
 
 

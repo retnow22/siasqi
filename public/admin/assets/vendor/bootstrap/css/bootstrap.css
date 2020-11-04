@@ -251,6 +251,8 @@ th {
   .table {
     border-collapse: collapse !important;
   }
+
+
   .table td,
   .table th {
     background-color: #fff !important;
@@ -2294,6 +2296,14 @@ th {
 .table .table {
   background-color: #fff;
 }
+
+table.table > tr > thead.thead-dark > th {
+  color: #fff;
+  text-align: center;
+  background-color: #343a40;
+  border-color: #454d55;
+}
+
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
 .table-condensed > tfoot > tr > th,

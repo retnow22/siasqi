@@ -20,8 +20,17 @@ class PesertaController extends Controller
     
     public function create(Request $request)
     {
-        Peserta::create($request->all());
+        //insert ke table Users
+        $user = new \App\Models\User;
+        $user->role = 'Peserta';
+        $user->name = $request->nama;
+        $user->email = $request->email;
+        $user->password = bcrypt('12345678');
+        $user->save();
 
+        //insert ke table Peserta
+        $request->request->add(['user_id'=>$user->id ]);
+        $peserta = Peserta::create($request->all());
         return redirect('/peserta')->with('sukses','Data berhasil ditambahkan!');
     }
 

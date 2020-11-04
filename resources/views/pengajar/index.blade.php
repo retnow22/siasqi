@@ -6,12 +6,12 @@
             {{session('sukses')}}
             </div>
 @endif
-<h5 class="page-title"><i class="fa fa-user"></i> Data Peserta</h5>
+<h5 class="page-title"><i class="fa fa-user"></i> Pengajar</h5>
 <div class="row">
     <div class="col-md-12">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">Data Peserta</h3>
+            <h3 class="panel-title">Pengajar</h3>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -28,40 +28,38 @@
                 <div class= "table-responsive">
                 <table class="table table-hover table-striped table-bordered">
                     <tr>
-                    <thead>
-                        <th>NIS</th>
-                        <th>Nama</th>
-                        <th>Prodi</th>
-                        <th>Fakultas</th>
-                        <th>Instansi</th>
-                        <th>Angkatan</th>
-                        <th>Nomor HP</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Level</th>
-                        <th>Semester Masuk</th>
-                        <th>Status</th>
-                        <!-- <th>USER ID</th> -->
-                        <th>Aksi</th>
+                        <thead class="thead-dark">
+                            <th>NIP</th>
+                            <th>Nama</th>
+                            <th>Prodi</th>
+                            <th>Fakultas</th>
+                            <th>Instansi</th>
+                            <th>Angkatan</th>
+                            <th>Nomor HP</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Level</th>
+                            <th>Kode Pengajar</th>
+                            <!-- <th>USER ID</th> -->
+                            <th>Aksi</th>
 
-                    </thead>
+                        </thead>
                     </tr>
-                    @foreach($data_peserta as $peserta)
+                    @foreach($data_pengajar as $pengajar)
                     <tr>
-                        <td class="text-center"> {{ $peserta -> nis }} </td>
-                        <td> {{ $peserta -> nama }} </td>
-                        <td class="text-center"> {{ $peserta -> prodi }} </td>
-                        <td class="text-center"> {{ $peserta -> fakultas }} </td>
-                        <td class="text-center"> {{ $peserta -> instansi }} </td>
-                        <td class="text-center"> {{ $peserta -> angkatan }} </td>
-                        <td> {{ $peserta -> no_hp }} </td>
-                        <td class="text-center"> {{ $peserta -> jenis_kelamin }} </td>
-                        <td class="text-center"> {{ $peserta -> level }} </td>
-                        <td class="text-center"> {{ $peserta -> semester_masuk }} </td>
-                        <td class="text-center"> {{ $peserta -> status }} </td>
-                        <!-- <td> {{ $peserta -> user_id }} </td> -->
+                        <td class="text-center"> {{ $pengajar -> nip }} </td>
+                        <td> {{ $pengajar -> nama }} </td>
+                        <td class="text-center"> {{ $pengajar -> prodi }} </td>
+                        <td class="text-center"> {{ $pengajar -> fakultas }} </td>
+                        <td class="text-center"> {{ $pengajar -> instansi }} </td>
+                        <td class="text-center"> {{ $pengajar -> angkatan }} </td>
+                        <td> {{ $pengajar -> no_hp }} </td>
+                        <td class="text-center"> {{ $pengajar -> jenis_kelamin }} </td>
+                        <td class="text-center"> {{ $pengajar -> level }} </td>
+                        <td class="text-center"> {{ $pengajar -> kode_pengajar }} </td>                        
+                        <!-- <td> {{ $pengajar -> user_id }} </td> -->
                         <td> 
-                        <a href="/peserta/{{$peserta->id}}/edit" class="btn btn-warning btn-xs"><i class="lnr lnr-pencil"></i></a>
-                        <a href="/peserta/{{$peserta->id}}/delete" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="lnr lnr-trash"></i></a>                         
+                        <a href="/pengajar/{{$pengajar->id}}/edit" class="btn btn-warning btn-xs"><i class="lnr lnr-pencil"></i></a>
+                        <a href="/pengajar/{{$pengajar->id}}/delete" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="lnr lnr-trash"></i></a>                         
                         </td>
                     </tr>
                     @endforeach
@@ -74,36 +72,30 @@
 </div>
 
  <!-- Modal -->
- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah Data Peserta</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Data Pengajar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <form action="peserta/create" method="POST" >
+        <form action="pengajar/create" method="POST" >
             @csrf
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        <label for="nis" class="col-md-3 col-form-label text-right"><strong>NIS :</strong></label>
+                        <label for="nis" class="col-md-3 col-form-label text-right"><strong>NIP :</strong></label>
                         <div class="col-md-9">
-                        <input type="text" name="nis" class="form-control form-control-sm" placeholder="">
+                        <input type="text" name="nip" class="form-control form-control-sm" placeholder="">
                         </div>
                     </div>
                     <div class="row">
                         <label for="nama" class="col-md-3 col-form-label text-right"><strong>Nama :</strong></label>
                         <div class="col-md-9">
                         <input type="text" name="nama" class="form-control form-control-sm" placeholder="">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label for="email" class="col-md-3 col-form-label text-right"><strong>Alamat Email :</strong></label>
-                        <div class="col-md-9">
-                        <input type="email" name="email" class="form-control form-control-sm" placeholder="">
                         </div>
                     </div>
                     <div class="row">
@@ -176,20 +168,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <label for="semester_masuk" class="col-md-3 col-form-label text-right"><strong>Semester Masuk :</strong></label>
+                        <label for="kode_pengajar" class="col-md-3 col-form-label text-right"><strong>Kode Pengajar :</strong></label>
                         <div class="col-md-9">
-                        <input type="text" name="semester_masuk" class="form-control form-control-sm" placeholder="">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label for="status" class="col-md-3 col-form-label text-right"><strong>Status :</strong></label>
-                        <div class="col-md-9">
-                            <select id="status" class="form-control form-control-sm" name="status" required>
-                                <option selected>Pilih</option>
-                                <option value="Aktif">Aktif</option>
-                                <option value="Non Aktif">Non Aktif</option>
-                                <option value="Lulus">Lulus</option>
-                            </select>
+                        <input type="text" name="kode_pengajar" class="form-control form-control-sm" placeholder="">
                         </div>
                     </div>
                     <div class="row">
