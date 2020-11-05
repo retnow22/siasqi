@@ -58,4 +58,12 @@ class PesertaController extends Controller
        
         return redirect('/peserta')->with('sukses','Data berhasil dihapus!');
     }
+
+    public function nilai($id)
+    {
+        $nilai_peserta = Peserta::find($id);
+        // dd($nilai_peserta);
+
+        return view('peserta.hasil_studi', ['nilai_peserta' => $nilai_peserta]);
+    }
 }

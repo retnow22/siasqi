@@ -23,7 +23,6 @@ class CreateMatpelTable extends Migration
             $table->string('level');
             $table->integer('kuota');
             $table->integer('pengajar_id')->nullable();
-            $table->integer('peserta_id')->nullable();
             $table->timestamps();
         });
     }

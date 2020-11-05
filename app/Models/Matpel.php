@@ -5,29 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Peserta extends Model
+class Matpel extends Model
 {
-    // use HasFactory;
-    protected $table = 'peserta';
+    //use HasFactory;
+
+    protected $table = 'matpel';
 
     protected $fillable = [
-        'nis',
+        'kode',
         'nama',
-        'prodi',
-        'fakultas',
-        'instansi',
-        'angkatan',
-        'no_hp',
-        'jenis_kelamin',
+        'semester',
+        'hari',
+        'waktu',
         'level',
-        'semester_masuk',
-        'status',
-        'user_id'
+        'kuota',
+        'pengajar_id',
+        'peserta_id',
     ];
 
-    public function matpel()
+    public function peserta()
     {
-        return $this->belongsToMany(Matpel::class)
+        return $this->belongsToMany(Peserta::class)
             ->withPivot([
                 'nilai_lisan',
                 'nilai_teori',
@@ -38,14 +36,8 @@ class Peserta extends Model
                 ]);
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public function nilai()
     {
         return $this->hasOne(Nilai::class);
     }
-
 }
