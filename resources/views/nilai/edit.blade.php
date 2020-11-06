@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h5 class="page-title"><i class="fa fa-graduation-ca"></i> Edit Nilai Peserta</h5>
+<h5 class="page-title"><i class="fa fa-graduation-cap"></i> Edit Nilai Peserta</h5>
 <div class="row">
     <div class="col-md-12">
     <div class="panel">
@@ -56,7 +56,10 @@
                 <div class="row">
                     <label for="keterangan" class="col-md-3 col-form-label text-right"><strong>Keterangan :</strong></label>
                     <div class="col-md-9">
-                    <input type="text" name="keterangan" value="{{$nilai->keterangan}}" class="form-control form-control-sm" placeholder="">
+                        <select id="keterangan" class="form-control form-control-sm" name="keterangan" required>
+                            <option value="Lulus" @if($nilai->keterangan == 'Lulus') selected @endif>Lulus</option>
+                            <option value="Belum Lulus" @if($nilai->keterangan == 'Belum Lulus') selected @endif>Belum Lulus</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">

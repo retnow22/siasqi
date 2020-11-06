@@ -49,4 +49,23 @@ class PengajarController extends Controller
        
         return redirect('/pengajar')->with('sukses','Data berhasil dihapus!');
     }
+
+    public function profil($id)
+    {
+        $pengajar = Pengajar::find($id);
+
+        return view('pengajar.profil', ['pengajar'=>$pengajar]);
+    }
+
+    public function updateprofil($id, Request $request)
+    {
+        $pengajar = Pengajar::find($id);
+        // dd($request->all());
+        $pengajar->update($request->all());
+  
+        return view('pengajar.profil', ['pengajar'=> $pengajar])
+                        ->with('success','Biodata berhasil diperbarui!');
+
+    }
+
 }

@@ -17,10 +17,26 @@ class NilaiController extends Controller
             $data_peserta = Peserta::all();            
         }
 
-        $matpel = Matpel::all();
+        // Ceritanya mau bikin filter di selection peserta, jadi kalau diselect mp a, 
+        // maka peserta yang muncul hanya yg mengambil mp tersebut,, tp masih -GAGAL-
+        if($request->has('matpel_id')){
+            $matpelsel = Matpel::find($request->matpel_id);
+    
+            $data_peserta = $matpelsel->peserta();
 
-        $nilai = Nilai::all();
-        
+            dd($data_peserta->all());
+
+            $matpel = Matpel::all();
+
+            $nilai = Nilai::all();
+
+            return view('nilai.nilai_uas', ['data_peserta' => $data_peserta, 'matpel' => $matpel, 'nilai' => $nilai, 'matpelsel' => $matpelsel]);
+        }else{
+            $matpel = Matpel::all();
+
+            $nilai = Nilai::all();
+        }
+             
         return view('nilai.nilai_uas', ['data_peserta' => $data_peserta, 'matpel' => $matpel, 'nilai' => $nilai]);
     }
     
@@ -28,6 +44,10 @@ class NilaiController extends Controller
     {
         $matpel = Matpel::all();
         $data_peserta = Peserta::all();
+        $peserta = Peserta::find($request->peserta_id);
+        if($peserta->matpel()->where('matpel_id',$request->matpel_id)->exists()){
+            return redirect('/nilai')->with('error','Data nilai sudah ada!');
+        };
         $nilai = Nilai::create($request->all());
         
         return redirect('/nilai')->with('sukses','Data nilai berhasil ditambahkan!');

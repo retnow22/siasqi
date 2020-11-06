@@ -6,6 +6,7 @@ use App\Http\Controllers\PengajarController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NilaiController;
+use App\Http\Controllers\MatpelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +39,12 @@ Route::group(['middleware' => ['auth', 'checkRole:Admin']], function(){
     Route::post('/nilai/create', [NilaiController::class, 'create']);
     Route::get('/nilai/{id}/edit', [NilaiController::class, 'edit']);
     Route::post('/nilai/{id}/update', [NilaiController::class, 'update']);
-    Route::get('/nilai/{id}/delete', [NilaiController::class, 'delete']);
+    Route::get('/nilai/{id}/delete', [NilaiController::class, 'delete']);    
+    Route::get('/jadwal', [MatpelController::class, 'index']);
+    Route::post('/jadwal/create', [MatpelController::class, 'create']);
+    Route::get('/jadwal/{id}/edit', [MatpelController::class, 'edit']);
+    Route::post('/jadwal/{id}/update', [MatpelController::class, 'update']);
+    Route::get('/jadwal/{id}/delete', [MatpelController::class, 'delete']);
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:Admin,Peserta,Pengajar']], function(){
@@ -46,5 +52,13 @@ Route::group(['middleware' => ['auth', 'checkRole:Admin,Peserta,Pengajar']], fun
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 
-Route::get('/peserta/{id}/hasil-studi', [PesertaController::class, 'nilai']);
+Route::group(['middleware' => ['auth', 'checkRole:Pengajar']], function(){
+    Route::get('/pengajar/{id}/profil', [PengajarController::class, 'profil']);
+    Route::post('/pengajar/{id}/updateprofil', [PengajarController::class, 'updateprofil']);
+});
+
+Route::group(['middleware' => ['auth', 'checkRole:Peserta']], function(){
+    Route::get('/peserta/{id}/hasil-studi', [PesertaController::class, 'nilai']);    
+});
+
 

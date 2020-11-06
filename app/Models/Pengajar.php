@@ -23,4 +23,14 @@ class Pengajar extends Model
         'kode_pengajar',
         'user_id'
     ];
+
+    public function matpel()
+    {
+        return $this->hasMany(Matpel::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

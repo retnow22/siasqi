@@ -38,6 +38,11 @@ class Matpel extends Model
 
     public function nilai()
     {
-        return $this->hasOne(Nilai::class);
+        return $this->hasMany(Nilai::class);
+    }
+
+    public function pengajar()
+    {
+        return $this->belongsTo(Pengajar::class);
     }
 }

@@ -87,23 +87,24 @@
     </div>
     <div class="modal-body">
         <form action="/nilai/create" method="POST" >
-            @csrf                    
+            @csrf 
+            <div class="row">
+            <label for="matpel_id" class="col-md-3 col-form-label text-right"><strong>Mata Pelajaran :</strong></label>
+                <div class="col-md-9">
+                    <select id="matpel_id" class="form-control form-control-sm" name="matpel_id" required>
+                    <option value="" selected>pilih</option>
+                    @foreach($matpel as $mp)
+                        <option value="{{$mp->id}}">({{$mp->kode}})-{{$mp->nama}}</option>
+                    @endforeach
+                    </select>
+                </div>
+            </div>                   
             <div class="row">
             <label for="peserta_id" class="col-md-3 col-form-label text-right"><strong>Nama Peserta :</strong></label>
                 <div class="col-md-9">
                     <select id="peserta_id" class="form-control form-control-sm" name="peserta_id" required>
                     @foreach($data_peserta as $peserta)
                         <option value="{{$peserta->id}}">({{$peserta->nis}})-{{$peserta->nama}}</option>
-                    @endforeach
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-            <label for="matpel_id" class="col-md-3 col-form-label text-right"><strong>Mata Pelajaran :</strong></label>
-                <div class="col-md-9">
-                    <select id="matpel_id" class="form-control form-control-sm" name="matpel_id" required>
-                    @foreach($matpel as $mp)
-                        <option value="{{$mp->id}}">({{$mp->kode}})-{{$mp->nama}}</option>
                     @endforeach
                     </select>
                 </div>
@@ -135,7 +136,11 @@
             <div class="row">
                 <label for="keterangan" class="col-md-3 col-form-label text-right"><strong>Keterangan :</strong></label>
                 <div class="col-md-9">
-                <input type="text" name="keterangan" class="form-control form-control-sm" placeholder="">
+                    <select id="keterangan" class="form-control form-control-sm" name="keterangan" required>
+                        <option selected>Pilih</option>
+                        <option value="Lulus">Lulus</option>
+                        <option value="Belum Lulus">Belum Lulus</option>
+                    </select>
                 </div>
             </div>
             <div class="row">
