@@ -6,6 +6,11 @@
             {{session('sukses')}}
             </div>
 @endif
+@if(session('error'))
+            <div class="alert alert-danger" role="alert">
+            {{session('error')}}
+            </div>
+@endif
 <h5 class="page-title"><i class="fa fa-user"></i> Data Peserta</h5>
 <div class="row">
     <div class="col-md-12">

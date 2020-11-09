@@ -55,10 +55,16 @@ Route::group(['middleware' => ['auth', 'checkRole:Admin,Peserta,Pengajar']], fun
 Route::group(['middleware' => ['auth', 'checkRole:Pengajar']], function(){
     Route::get('/pengajar/{id}/profil', [PengajarController::class, 'profil']);
     Route::post('/pengajar/{id}/updateprofil', [PengajarController::class, 'updateprofil']);
+    Route::get('/pengajar/{id}/lihatpeserta', [PengajarController::class, 'lihatpeserta']);
+    Route::get('/pengajar/{id}/inputnilai', [PengajarController::class, 'inputnilai']);
+    Route::post('/pengajar/{id}/updatenilai', [PengajarController::class, 'updatenilai']);
+    Route::get('/pengajar/{id}/jadwal', [PengajarController::class, 'jadwal']);
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:Peserta']], function(){
     Route::get('/peserta/{id}/hasil-studi', [PesertaController::class, 'nilai']);    
+    Route::get('/peserta/{id}/profil', [PesertaController::class, 'profil']);
+    Route::post('/peserta/{id}/updateprofil', [PesertaController::class, 'updateprofil']);
 });
 
 

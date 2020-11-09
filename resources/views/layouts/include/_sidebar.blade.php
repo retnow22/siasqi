@@ -20,8 +20,10 @@
                     <li><a href="/nilai"><i class="fa fa-graduation-cap"></i> <span>Nilai UAS</span></a></li>
                 @elseif(auth()->user()->role == 'Pengajar')
                     <li><a href="/pengajar/{{auth()->user()->pengajar->id}}/profil"><i class="fa fa-user-circle-o"></i> <span>Profil</span></a></li>
+                    <li><a href="/pengajar/{{auth()->user()->pengajar->id}}/jadwal"><i class="fa fa-calendar"></i> <span>Jadwal Mengajar</span></a></li>
                 @elseif(auth()->user()->role == 'Peserta')
                     <li><a href="/peserta/{{auth()->user()->peserta->id}}/hasil-studi"><i class="fa fa-graduation-cap"></i> <span>Hasil Studi</span></a></li>
+                    <li><a href="/peserta/{{auth()->user()->peserta->id}}/profil"><i class="fa fa-user-circle-o"></i> <span>Profil</span></a></li>
                 @endif
 
             </ul>

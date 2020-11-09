@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use App\Models\Pengajar;
+Use App\Models\Matpel;
+Use App\Models\Peserta;
+Use App\Models\Nilai;
 
 class PengajarController extends Controller
 {
@@ -67,5 +70,37 @@ class PengajarController extends Controller
                         ->with('success','Biodata berhasil diperbarui!');
 
     }
+
+    public function jadwal($id)
+    {
+        $jadwal = Pengajar::find($id);
+        // dd($nilai_peserta);
+
+        return view('pengajar.jadwal', ['jadwal' => $jadwal]);
+    }
+
+    public function lihatpeserta($id)
+    {
+        $rombel = Matpel::find($id);
+        return view('pengajar.rombel', ['rombel' => $rombel]);
+    }
+
+    public function inputnilai($id)
+    {
+        $nilai = Nilai::find($id);
+       
+        return view('pengajar.input-nilai', ['nilai' => $nilai]);
+    }
+
+    public function updatenilai(Request $request, $id)
+    {
+        $nilai = Nilai::find($id);
+
+        $nilai->update($request->all());
+       
+        return redirect('/pengajar/'.$id.'/lihatpeserta')->with('sukses','Data nilai berhasil diperbaharui!');
+    }
+
+
 
 }

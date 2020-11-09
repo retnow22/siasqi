@@ -102,7 +102,7 @@
                         <div class="row">
                             <label for="userid" class="col-md-3 col-form-label text-right"><strong>User Id :</strong></label>
                             <div class="col-md-9">
-                            <input type="text" name="userid" value="{{$pengajar->user_id}}" class="form-control form-control-sm" placeholder="">
+                            <input type="text" name="user_id" value="{{$pengajar->user_id}}" class="form-control form-control-sm" placeholder="">
                             </div>
                         </div>
                         <br>

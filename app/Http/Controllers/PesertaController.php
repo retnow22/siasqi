@@ -66,4 +66,22 @@ class PesertaController extends Controller
 
         return view('peserta.hasil_studi', ['nilai_peserta' => $nilai_peserta]);
     }
+
+    public function profil($id)
+    {
+        $peserta = Peserta::find($id);
+
+        return view('peserta.profil', ['peserta'=>$peserta]);
+    }
+
+    public function updateprofil($id, Request $request)
+    {
+        $peserta = Peserta::find($id);
+      
+        $peserta->update($request->all());
+  
+        return view('peserta.profil', ['peserta'=> $peserta])
+                        ->with('success','Biodata berhasil diperbarui!');
+
+    }
 }

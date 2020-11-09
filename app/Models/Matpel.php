@@ -27,6 +27,7 @@ class Matpel extends Model
     {
         return $this->belongsToMany(Peserta::class)
             ->withPivot([
+                'id',
                 'nilai_lisan',
                 'nilai_teori',
                 'nilai_akhir',      
