@@ -77,4 +77,17 @@ class NilaiController extends Controller
        
         return redirect('/nilai')->with('sukses','Data nilai berhasil dihapus!');
     }
+
+    public function addpeserta(Request $request)
+    {
+        $matpel = Matpel::all();
+        $data_peserta = Peserta::all();
+        $kelompok = Matpel::find($request->matpel_id);
+        if($kelompok->peserta()->where('peserta_id',$request->peserta_id)->exists()){
+            return redirect('/pengajar/'.$request->matpel_id.'/lihatpeserta')->with('error','Peserta sudah ada!');
+        };
+        $nilai = Nilai::create($request->all());
+        
+        return redirect('/pengajar/'.$request->matpel_id.'/lihatpeserta')->with('sukses','Peserta berhasil ditambahkan!');
+    }
 }

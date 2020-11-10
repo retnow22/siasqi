@@ -81,8 +81,10 @@ class PengajarController extends Controller
 
     public function lihatpeserta($id)
     {
+        $data_peserta = Peserta::all();
+        $matpel = Matpel::all();
         $rombel = Matpel::find($id);
-        return view('pengajar.rombel', ['rombel' => $rombel]);
+        return view('pengajar.rombel', ['rombel' => $rombel, 'matpel' => $matpel, 'data_peserta' => $data_peserta]);
     }
 
     public function inputnilai($id)

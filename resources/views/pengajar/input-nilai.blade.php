@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<h5 class="page-title"><i class="fa fa-graduation-cap"></i> Edit Nilai Peserta</h5>
+<h5 class="page-title"><i class="fa fa-graduation-cap"></i> Input Nilai Peserta</h5>
 <div class="row">
     <div class="col-md-12">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">Edit Nilai Peserta</h3>
+            <h3 class="panel-title">Input Nilai Peserta</h3>
         </div>
         <div class="panel-body">
         <div class="row">
@@ -48,12 +48,24 @@
                     </div>
                 </div>
                 <div class="row">
+                    <label for="kkm" class="col-md-3 col-form-label text-right"><strong>KKM :</strong></label>
+                    <div class="col-md-9">
+                    <input type="text" name="kkm" value="{{$nilai->kkm}}" class="form-control form-control-sm" placeholder="">
+                    </div>
+                </div>
+                <div class="row">
                     <label for="keterangan" class="col-md-3 col-form-label text-right"><strong>Keterangan :</strong></label>
                     <div class="col-md-9">
                         <select id="keterangan" class="form-control form-control-sm" name="keterangan" required>
                             <option value="Lulus" @if($nilai->keterangan == 'Lulus') selected @endif>Lulus</option>
                             <option value="Belum Lulus" @if($nilai->keterangan == 'Belum Lulus') selected @endif>Belum Lulus</option>
                         </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="penguji" class="col-md-3 col-form-label text-right"><strong>Penguji :</strong></label>
+                    <div class="col-md-9">
+                    <input type="text" name="penguji" value="{{$nilai->penguji}}" class="form-control form-control-sm" placeholder="">
                     </div>
                 </div>
                 <br>

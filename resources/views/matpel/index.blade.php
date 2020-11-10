@@ -58,7 +58,8 @@
                         <td class="text-center"> {{ $matpel->pengajar-> kode_pengajar }} </td>
                         <td> {{ $matpel->pengajar-> nama }} </td>
                         <td class="text-center"> {{ $matpel -> kuota }} </td>
-                        <td> 
+                        <td>
+                        <a href="/pengajar/{{$matpel->id}}/lihatpeserta" class="btn btn-primary btn-xs"><i class="fa fa-folder-open-o"></i></a> 
                         <a href="/jadwal/{{$matpel->id}}/edit" class="btn btn-warning btn-xs"><i class="lnr lnr-pencil"></i></a>
                         <a href="/jadwal/{{$matpel->id}}/delete" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="lnr lnr-trash"></i></a>                         
                         </td>

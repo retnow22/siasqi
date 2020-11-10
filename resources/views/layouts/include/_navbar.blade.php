@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="brand">
-        <a href="/"><img src="{{asset('admin/assets/img/logo.png')}}" width="40" height="35" alt="" class="d-inline-block align-top">SIAKAD SQI UNJ</a>
+        <a href="/"><img src="{{asset('admin/assets/img/logo.png')}}" width="40" height="35" alt="" class="d-inline-block align-top">SIASQI UNJ</a>
     </div>
     <div class="container-fluid">
         <div class="navbar-btn">

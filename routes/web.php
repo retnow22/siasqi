@@ -45,6 +45,8 @@ Route::group(['middleware' => ['auth', 'checkRole:Admin']], function(){
     Route::get('/jadwal/{id}/edit', [MatpelController::class, 'edit']);
     Route::post('/jadwal/{id}/update', [MatpelController::class, 'update']);
     Route::get('/jadwal/{id}/delete', [MatpelController::class, 'delete']);
+    Route::post('/nilai/addpeserta', [NilaiController::class, 'addpeserta']);
+    
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:Admin,Peserta,Pengajar']], function(){
@@ -52,19 +54,25 @@ Route::group(['middleware' => ['auth', 'checkRole:Admin,Peserta,Pengajar']], fun
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 
+Route::group(['middleware' => ['auth', 'checkRole:Admin,Pengajar']], function(){
+    Route::get('/pengajar/{id}/lihatpeserta', [PengajarController::class, 'lihatpeserta']);   
+});
+
 Route::group(['middleware' => ['auth', 'checkRole:Pengajar']], function(){
     Route::get('/pengajar/{id}/profil', [PengajarController::class, 'profil']);
     Route::post('/pengajar/{id}/updateprofil', [PengajarController::class, 'updateprofil']);
-    Route::get('/pengajar/{id}/lihatpeserta', [PengajarController::class, 'lihatpeserta']);
+    Route::get('/pengajar/{id}/jadwal', [PengajarController::class, 'jadwal']);
     Route::get('/pengajar/{id}/inputnilai', [PengajarController::class, 'inputnilai']);
     Route::post('/pengajar/{id}/updatenilai', [PengajarController::class, 'updatenilai']);
-    Route::get('/pengajar/{id}/jadwal', [PengajarController::class, 'jadwal']);
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:Peserta']], function(){
     Route::get('/peserta/{id}/hasil-studi', [PesertaController::class, 'nilai']);    
     Route::get('/peserta/{id}/profil', [PesertaController::class, 'profil']);
     Route::post('/peserta/{id}/updateprofil', [PesertaController::class, 'updateprofil']);
+    Route::get('/peserta/{id}/rencana-studi', [PesertaController::class, 'rencanastudi']);
+    Route::get('/peserta/{id}/daftar-studi', [PesertaController::class, 'daftarstudi']);
+    Route::get('/peserta/{id}/pilihmatpel', [PesertaController::class, 'pilihmatpel']);    
 });
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use App\Models\Peserta;
+Use App\Models\Matpel;
 
 class PesertaController extends Controller
 {
@@ -82,6 +83,33 @@ class PesertaController extends Controller
   
         return view('peserta.profil', ['peserta'=> $peserta])
                         ->with('success','Biodata berhasil diperbarui!');
+
+    }
+
+    public function rencanastudi($id)
+    {
+        $peserta = Peserta::find($id);
+        
+        $matpel = Matpel::where('level','=',$peserta->level)->get();
+        
+        return view('peserta.rencana-studi', ['peserta' => $peserta, 'matpel' => $matpel]);
+
+    }
+
+    public function daftarstudi($id)
+    {
+        $peserta = Peserta::find($id);
+
+        return view('peserta.daftar_studi', ['peserta' => $peserta]);
+    }
+
+    public function pilihmatpel($id)
+    {
+        $peserta = Peserta::find(auth()->user()->peserta->id);
+        
+        $peserta->matpel()->attach($id);
+
+        return view('peserta.daftar_studi', ['peserta' => $peserta]);
 
     }
 }
