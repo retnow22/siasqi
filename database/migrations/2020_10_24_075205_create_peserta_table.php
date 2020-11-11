@@ -23,7 +23,7 @@ class CreatePesertaTable extends Migration
             $table->string('angkatan');
             $table->string('no_hp');
             $table->string('jenis_kelamin');
-            $table->string('level');
+            $table->integer('level');
             $table->string('semester_masuk')->nullable();
             $table->string('status')->nullable();
             $table->string('user_id')->nullable();

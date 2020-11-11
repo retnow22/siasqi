@@ -20,7 +20,7 @@ class CreateMatpelTable extends Migration
             $table->string('semester');
             $table->string('hari');
             $table->string('waktu');
-            $table->string('level');
+            $table->integer('level');
             $table->integer('kuota');
             $table->integer('pengajar_id')->nullable();
             $table->timestamps();

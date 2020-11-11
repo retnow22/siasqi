@@ -90,4 +90,13 @@ class NilaiController extends Controller
         
         return redirect('/pengajar/'.$request->matpel_id.'/lihatpeserta')->with('sukses','Peserta berhasil ditambahkan!');
     }
+
+    public function deletepeserta($id)
+    {
+        $peserta = Nilai::find($id);
+
+        $peserta->delete($peserta);
+       
+        return redirect('/pengajar/'.$peserta->matpel_id.'/lihatpeserta')->with('sukses','Peserta berhasil dihapus!');
+    }
 }

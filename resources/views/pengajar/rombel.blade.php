@@ -94,6 +94,7 @@
                             <th>Instansi</th>
                             <th>Angkatan</th>
                             <th>Nomor HP</th>
+                            <th>Aksi</th>
                         @elseif( $role == 'Pengajar')
                             <th>No</th>
                             <th>NIS</th>
@@ -122,6 +123,9 @@
                         <td class="text-center"> {{ $peserta -> instansi }} </td>
                         <td class="text-center"> {{ $peserta -> angkatan }} </td>
                         <td class="text-center"> {{ $peserta -> no_hp }} </td>
+                        <td>
+                        <a href="/nilai/{{$peserta->pivot->id}}/deletepeserta" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="lnr lnr-trash"></i></a>                         
+                        </td>
                     @elseif( $role == 'Pengajar')
                         <td scope="row"> {{ $key + 1 }}</td>
                         <td class="text-center"> {{ $peserta -> nis }} </td>

@@ -4,7 +4,7 @@
             <ul class="nav">
                 <li><a href="/home" class="active"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
                 @if(auth()->user()->role == 'Admin')
-                    <li><a href="#"><i class="fa fa-user"></i> <span>Kelola Akun</span></a></li>
+                    <li><a href="/lihatakun"><i class="fa fa-user"></i> <span>Kelola Akun</span></a></li>
                     <li><a href="/peserta"><i class="fa fa-user"></i> <span>Data Peserta</span></a></li>
                     <li><a href="/pengajar"><i class="fa fa-user"></i> <span>Data Pengajar</span></a></li>
                     <li>

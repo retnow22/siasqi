@@ -5,6 +5,7 @@ use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\PengajarController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\MatpelController;
 
@@ -23,6 +24,8 @@ Route::get('/', [AuthController::class, 'login'])->name('login');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/postlogin', [AuthController::class, 'postlogin']);
+Route::get('/registrasi', [RegistrasiController::class, 'registrasi']);
+Route::post('/postregistrasi', [RegistrasiController::class, 'postregistrasi']);
 
 Route::group(['middleware' => ['auth', 'checkRole:Admin']], function(){
     Route::get('/peserta', [PesertaController::class, 'index']);
@@ -46,7 +49,12 @@ Route::group(['middleware' => ['auth', 'checkRole:Admin']], function(){
     Route::post('/jadwal/{id}/update', [MatpelController::class, 'update']);
     Route::get('/jadwal/{id}/delete', [MatpelController::class, 'delete']);
     Route::post('/nilai/addpeserta', [NilaiController::class, 'addpeserta']);
-    
+    Route::get('/nilai/{id}/deletepeserta', [NilaiController::class, 'deletepeserta']);  
+    Route::get('/lihatakun', [RegistrasiController::class, 'lihatakun']);
+    Route::post('/tambahakun', [RegistrasiController::class, 'tambahakun']);
+    Route::get('/akun/{id}/edit', [RegistrasiController::class, 'editakun']);
+    Route::post('/akun/{id}/update', [RegistrasiController::class, 'updateakun']);
+    Route::get('/akun/{id}/delete', [RegistrasiController::class, 'deleteakun']);
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:Admin,Peserta,Pengajar']], function(){
