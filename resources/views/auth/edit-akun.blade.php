@@ -13,10 +13,16 @@
         <div class="col-md-8">
             <form action="/akun/{{$user->id}}/update" method="POST" >
                 @csrf
-                <div class="row">
-                        <label for="nama" class="col-md-3 col-form-label text-right"><strong>Username :</strong></label>
+                    <div class="row">
+                        <label for="nama" class="col-md-3 col-form-label text-right"><strong>Nama :</strong></label>
                         <div class="col-md-9">
-                        <input type="text" name="nama" value="{{$user->name}}" class="form-control form-control-sm" placeholder="">
+                        <input type="text" name="nama" value="{{$user->name}}" class="form-control form-control-sm" placeholder="" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="username" class="col-md-3 col-form-label text-right"><strong>Username :</strong></label>
+                        <div class="col-md-9">
+                        <input type="text" name="username" value="{{$user->username}}" class="form-control form-control-sm" placeholder="" readonly>
                         </div>
                     </div>
                     <div class="row">

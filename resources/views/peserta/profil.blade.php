@@ -24,7 +24,7 @@
                 <div class="col-md-6">
                 <div class="row">
                     <dt class="col-sm-4 text-right">Nomor Induk :</dt>
-                    <dd class="col-sm-8">{{auth()->user()->peserta->nis}}</dd>
+                    <dd class="col-sm-8">{{auth()->user()->peserta->nomor_induk}}</dd>
                     <dt class="col-sm-4 text-right">Nama :</dt>
                     <dd class="col-sm-8">{{ Auth::user()->name }} </dd>
                     <dt class="col-sm-4 text-right">Level :</dt>

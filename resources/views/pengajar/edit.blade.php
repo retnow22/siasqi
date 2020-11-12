@@ -16,9 +16,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
-                            <label for="nip" class="col-md-3 col-form-label text-right"><strong>NIP :</strong></label>
+                            <label for="nomor_induk" class="col-md-3 col-form-label text-right"><strong>NIP :</strong></label>
                             <div class="col-md-9">
-                            <input type="text" name="nip" value="{{$pengajar->nip}}" class="form-control form-control-sm" placeholder="">
+                            <input type="text" name="nomor_induk" value="{{$pengajar->nomor_induk}}" class="form-control form-control-sm" placeholder="">
                             </div>
                         </div>
                         <div class="row">
@@ -97,12 +97,6 @@
                             <label for="kode_pengajar" class="col-md-3 col-form-label text-right"><strong>Kode Pengajar :</strong></label>
                             <div class="col-md-9">
                             <input type="text" name="kode_pengajar" value="{{$pengajar->kode_pengajar}}" class="form-control form-control-sm" placeholder="">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label for="userid" class="col-md-3 col-form-label text-right"><strong>User Id :</strong></label>
-                            <div class="col-md-9">
-                            <input type="text" name="user_id" value="{{$pengajar->user_id}}" class="form-control form-control-sm" placeholder="">
                             </div>
                         </div>
                         <br>

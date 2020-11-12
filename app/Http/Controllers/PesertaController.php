@@ -26,6 +26,7 @@ class PesertaController extends Controller
         $user->role = 'Peserta';
         $user->name = $request->nama;
         $user->email = $request->email;
+        $user->username = $request->nomor_induk;
         $user->password = bcrypt('12345678');
         $user->save();
 

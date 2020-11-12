@@ -11,7 +11,7 @@ class Peserta extends Model
     protected $table = 'peserta';
 
     protected $fillable = [
-        'nis',
+        'nomor_induk',
         'nama',
         'prodi',
         'fakultas',

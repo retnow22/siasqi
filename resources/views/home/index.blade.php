@@ -17,9 +17,9 @@
                         </div>
                     @endif
                     {{ __('') }}
-                        Selamat Datang {{ Auth::user()->name }} ^^
+                        Selamat Datang {{ Auth::user()->name }}
                         <br>
-                        Di Sistem Informasi Akademik Study Quran Intensive Quran Institute UNJ (SIQI)
+                        Di Sistem Informasi Akademik Study Quran Intensive Quran Institute UNJ (BETA)
                 </div>
             </div>
         </div>

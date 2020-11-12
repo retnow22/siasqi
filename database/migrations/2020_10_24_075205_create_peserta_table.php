@@ -14,8 +14,10 @@ class CreatePesertaTable extends Migration
     public function up()
     {
         Schema::create('peserta', function (Blueprint $table) {
+            $value = "000000";
+            $defstatus = "Aktif";
             $table->id();
-            $table->string('nis')->nullable();
+            $table->string('nomor_induk');
             $table->string('nama');
             $table->string('prodi');
             $table->string('fakultas');
@@ -25,8 +27,8 @@ class CreatePesertaTable extends Migration
             $table->string('jenis_kelamin');
             $table->integer('level');
             $table->string('semester_masuk')->nullable();
-            $table->string('status')->nullable();
-            $table->string('user_id')->nullable();
+            $table->string('status')->default($defstatus);
+            $table->integer('user_id')->nullable();
             $table->timestamps();
         });
     }

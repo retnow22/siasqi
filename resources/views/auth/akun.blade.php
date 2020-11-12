@@ -34,6 +34,7 @@
                 <table class="table table-hover table-striped table-bordered">
                     <tr>
                         <thead class="thead-dark">
+                            <th>Nama Lengkap</th>
                             <th>Username</th>
                             <th>Email</th>
                             <th>Password</th>
@@ -44,6 +45,7 @@
                     @foreach($user as $user)
                     <tr>
                         <td> {{ $user -> name }} </td>
+                        <td> {{ $user -> username }} </td>
                         <td> {{ $user -> email }} </td>
                         <td> {{ $user -> password }} </td>
                         <td class="text-center"> {{ $user -> role }} </td>
@@ -77,9 +79,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        <label for="nama" class="col-md-3 col-form-label text-right"><strong>Username :</strong></label>
+                        <label for="nama" class="col-md-3 col-form-label text-right"><strong>Nama :</strong></label>
                         <div class="col-md-9">
                         <input type="text" name="nama" class="form-control form-control-sm" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="username" class="col-md-3 col-form-label text-right"><strong>Username :</strong></label>
+                        <div class="col-md-9">
+                        <input type="text" name="username" class="form-control form-control-sm" placeholder="">
                         </div>
                     </div>
                     <div class="row">

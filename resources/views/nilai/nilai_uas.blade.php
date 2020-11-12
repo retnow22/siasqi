@@ -51,7 +51,7 @@
                     @foreach($nilai as $nilai)
                     <tr>
                         <td>{{ $nilai->matpel->semester }}</td>
-                        <td class="text-center">{{ $nilai->peserta -> nis }}</td>
+                        <td class="text-center">{{ $nilai->peserta -> nomor_induk }}</td>
                         <td>{{ $nilai->peserta -> nama }}</td>
                         <td class="text-center">{{ $nilai->matpel-> kode }}</td>
                         <td class="text-center">{{ $nilai->matpel-> nama }}</td>
@@ -104,7 +104,7 @@
                 <div class="col-md-9">
                     <select id="peserta_id" class="form-control form-control-sm" name="peserta_id" required>
                     @foreach($data_peserta as $peserta)
-                        <option value="{{$peserta->id}}">({{$peserta->nis}})-{{$peserta->nama}}</option>
+                        <option value="{{$peserta->id}}">({{$peserta->nomor_induk}})-{{$peserta->nama}}</option>
                     @endforeach
                     </select>
                 </div>

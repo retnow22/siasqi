@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth', 'checkRole:Admin']], function(){
     Route::get('/akun/{id}/delete', [RegistrasiController::class, 'deleteakun']);
 });
 
-Route::group(['middleware' => ['auth', 'checkRole:Admin,Peserta,Pengajar']], function(){
+Route::group(['middleware' => 'auth'], function(){
     Route::get('/home', [HomeController::class, 'index']);
     Route::get('/logout', [AuthController::class, 'logout']);
 });

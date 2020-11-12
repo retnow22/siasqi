@@ -36,12 +36,12 @@
                                 @csrf
                                 
 								<div class="form-group">
-									<label for="signin-email" class="control-label sr-only">Email</label>
-									<input type="email" name="email" class="form-control" id="signin-email" placeholder="Masukan alamat E-mail">
+									<label for="signin-username" class="control-label sr-only">Username</label>
+									<input type="text" name="username" class="form-control" id="signin-username" placeholder="Username">
 								</div>
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
-									<input type="password" name="password" class="form-control" id="signin-password" placeholder="Masukan Password">
+									<input type="password" name="password" class="form-control" id="signin-password" placeholder="Password">
 								</div>
 								<button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
 							</form>

@@ -51,6 +51,14 @@
                                 @csrf
 
                                 <div class="form-group row">
+                                    <label for="nomor_induk" class="col-md-4 col-form-label text-md-right">{{ __('Nomor Induk') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="nomor_induk" type="text" class="form-control" name="nomor_induk" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
                                     <label for="nama" class="col-md-4 col-form-label text-md-right">{{ __('Nama') }}</label>
 
                                     <div class="col-md-6">

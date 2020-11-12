@@ -16,9 +16,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
-                            <label for="nis" class="col-md-3 col-form-label text-right"><strong>NIS :</strong></label>
+                            <label for="nomor_induk" class="col-md-3 col-form-label text-right"><strong>NIS :</strong></label>
                             <div class="col-md-9">
-                            <input type="text" name="nis" value="{{$peserta->nis}}" class="form-control form-control-sm" placeholder="">
+                            <input type="text" name="nomor_induk" value="{{$peserta->nomor_induk}}" class="form-control form-control-sm" placeholder="">
                             </div>
                         </div>
                         <div class="row">
@@ -107,12 +107,6 @@
                                     <option value="Non Aktif" @if($peserta->status == 'Non Aktif') selected @endif>Non Aktif</option>
                                     <option value="Lulus" @if($peserta->status == 'Lulus') selected @endif>Lulus</option>
                                 </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label for="userid" class="col-md-3 col-form-label text-right"><strong>User Id :</strong></label>
-                            <div class="col-md-9">
-                            <input type="text" name="user_id" value="{{$peserta->user_id}}" class="form-control form-control-sm" placeholder="">
                             </div>
                         </div>
                         <br>

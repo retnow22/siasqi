@@ -23,9 +23,20 @@ class PengajarController extends Controller
     
     public function create(Request $request)
     {
-        Pengajar::create($request->all());
 
-        return redirect('/pengajar')->with('sukses','Data berhasil ditambahkan!');
+         //insert ke table Users
+         $user = new \App\Models\User;
+         $user->role = 'Pengajar';
+         $user->name = $request->nama;
+         $user->username = $request->nomor_induk;
+         $user->email = $request->email;
+         $user->password = bcrypt('12345678');
+         $user->save();
+ 
+         //insert ke table Pengajar
+         $request->request->add(['user_id'=>$user->id ]);
+         $pengajar = Pengajar::create($request->all());
+         return redirect('/pengajar')->with('sukses','Data berhasil ditambahkan!');
     }
 
     public function edit($id)

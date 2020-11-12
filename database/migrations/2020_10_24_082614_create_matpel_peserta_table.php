@@ -23,6 +23,19 @@ class CreateMatpelPesertaTable extends Migration
             $table->integer('kkm');
             $table->string('keterangan');
             $table->string('penguji');
+            $table->string('pertemuan1')->nullable();
+            $table->string('pertemuan2')->nullable();
+            $table->string('pertemuan3')->nullable();
+            $table->string('pertemuan4')->nullable();
+            $table->string('pertemuan5')->nullable();
+            $table->string('pertemuan6')->nullable();
+            $table->string('pertemuan7')->nullable();
+            $table->string('pertemuan8')->nullable();
+            $table->string('pertemuan9')->nullable();
+            $table->string('pertemuan10')->nullable();
+            $table->string('pertemuan11')->nullable();
+            $table->string('pertemuan12')->nullable();
+            $table->longText('evaluasi')->nullable();
             $table->timestamps();
         });
     }

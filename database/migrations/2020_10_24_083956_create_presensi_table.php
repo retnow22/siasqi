@@ -17,10 +17,11 @@ class CreatePresensiTable extends Migration
             $table->id();
             $table->integer('matpel_id');            
             $table->integer('pengajar_id');
-            $table->integer('peserta_id');
             $table->date('tanggal');
+            $table->string('pertemuan_ke');
+            $table->string('kehadiran');
             $table->string('materi');
-            $table->string('keterangan');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

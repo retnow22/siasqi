@@ -116,7 +116,7 @@
                     <tr>
                     @if($role == 'Admin')
                         <td scope="row"> {{ $key + 1 }}</td>
-                        <td class="text-center"> {{ $peserta -> nis }} </td>
+                        <td class="text-center"> {{ $peserta -> nomor_induk }} </td>
                         <td> {{ $peserta -> nama }} </td>
                         <td class="text-center"> {{ $peserta -> prodi }} </td>
                         <td class="text-center"> {{ $peserta -> fakultas }} </td>
@@ -128,7 +128,7 @@
                         </td>
                     @elseif( $role == 'Pengajar')
                         <td scope="row"> {{ $key + 1 }}</td>
-                        <td class="text-center"> {{ $peserta -> nis }} </td>
+                        <td class="text-center"> {{ $peserta -> nomor_induk }} </td>
                         <td> {{ $peserta -> nama }} </td>
                         <td class="text-center"> {{ $peserta -> prodi }} </td>
                         <td class="text-center"> {{ $peserta -> fakultas }} </td>
@@ -193,7 +193,7 @@
                                         Tahsin 3
                                     @elseif($level == 6)
                                         Tahsin 4
-                                    @endif)-({{$peserta->nis}})-{{$peserta->nama}}</option>
+                                    @endif)-({{$peserta->nomor_induk}})-{{$peserta->nama}}</option>
                     @endforeach
                     </select>
                 </div>

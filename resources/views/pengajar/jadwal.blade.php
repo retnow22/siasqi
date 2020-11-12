@@ -24,7 +24,7 @@
                 <div class="col-md-6">
                 <div class="row">
                     <dt class="col-sm-4 text-right">Nomor Induk :</dt>
-                    <dd class="col-sm-8">{{auth()->user()->pengajar->nip}}</dd>
+                    <dd class="col-sm-8">{{auth()->user()->pengajar->nomor_induk}}</dd>
                     <dt class="col-sm-4 text-right">Level :</dt>
                     <dd class="col-sm-8">
                         @php $level = auth()->user()->pengajar->level @endphp

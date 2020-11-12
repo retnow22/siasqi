@@ -17,7 +17,7 @@
                 <label for="peserta_id" class="col-md-3 col-form-label text-right"><strong>Nama Peserta :</strong></label>
                     <div class="col-md-9">
                         <select id="peserta_id" class="form-control form-control-sm" name="peserta_id" required readonly>
-                            <option value="{{$nilai->peserta_id}}">({{$nilai->peserta->nis}})-{{$nilai->peserta->nama}}</option>
+                            <option value="{{$nilai->peserta_id}}">({{$nilai->peserta->nomor_induk}})-{{$nilai->peserta->nama}}</option>
                         </select>
                     </div>
                 </div>

@@ -11,7 +11,7 @@ class Pengajar extends Model
     protected $table = 'pengajar';
 
     protected $fillable = [
-        'nip',
+        'nomor_induk',
         'nama',
         'prodi',
         'fakultas',

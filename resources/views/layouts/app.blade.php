@@ -43,7 +43,7 @@
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+				<p class="copyright"><i class="fa fa-copyright"></i> Quran Institute UNJ 2020 - Template by <a href="https://bootstrapthemes.co">BootstrapThemes</a>
 </p>
 			</div>
 		</footer>

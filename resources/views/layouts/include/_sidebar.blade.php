@@ -2,7 +2,7 @@
     <div class="sidebar-scroll">
         <nav>
             <ul class="nav">
-                <li><a href="/home" class="active"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
+                <li><a href="/home"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
                 @if(auth()->user()->role == 'Admin')
                     <li><a href="/lihatakun"><i class="fa fa-user"></i> <span>Kelola Akun</span></a></li>
                     <li><a href="/peserta"><i class="fa fa-user"></i> <span>Data Peserta</span></a></li>

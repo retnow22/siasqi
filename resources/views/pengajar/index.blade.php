@@ -11,12 +11,12 @@
             {{session('error')}}
             </div>
 @endif
-<h5 class="page-title"><i class="fa fa-user"></i> Pengajar</h5>
+<h5 class="page-title"><i class="fa fa-user"></i> Data Pengajar</h5>
 <div class="row">
     <div class="col-md-12">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">Pengajar</h3>
+            <h3 class="panel-title">Data Pengajar</h3>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -44,14 +44,13 @@
                             <th>Jenis Kelamin</th>
                             <th>Level</th>
                             <th>Kode Pengajar</th>
-                            <!-- <th>USER ID</th> -->
                             <th>Aksi</th>
 
                         </thead>
                     </tr>
                     @foreach($data_pengajar as $pengajar)
                     <tr>
-                        <td class="text-center"> {{ $pengajar -> nip }} </td>
+                        <td class="text-center"> {{ $pengajar -> nomor_induk }} </td>
                         <td> {{ $pengajar -> nama }} </td>
                         <td class="text-center"> {{ $pengajar -> prodi }} </td>
                         <td class="text-center"> {{ $pengajar -> fakultas }} </td>
@@ -60,8 +59,7 @@
                         <td> {{ $pengajar -> no_hp }} </td>
                         <td class="text-center"> {{ $pengajar -> jenis_kelamin }} </td>
                         <td class="text-center"> {{ $pengajar -> level }} </td>
-                        <td class="text-center"> {{ $pengajar -> kode_pengajar }} </td>                        
-                        <!-- <td> {{ $pengajar -> user_id }} </td> -->
+                        <td class="text-center"> {{ $pengajar -> kode_pengajar }} </td>
                         <td> 
                         <a href="/pengajar/{{$pengajar->id}}/edit" class="btn btn-warning btn-xs"><i class="lnr lnr-pencil"></i></a>
                         <a href="/pengajar/{{$pengajar->id}}/delete" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="lnr lnr-trash"></i></a>                         
@@ -92,15 +90,21 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        <label for="nis" class="col-md-3 col-form-label text-right"><strong>NIP :</strong></label>
+                        <label for="nomor_induk" class="col-md-3 col-form-label text-right"><strong>NIP :</strong></label>
                         <div class="col-md-9">
-                        <input type="text" name="nip" class="form-control form-control-sm" placeholder="">
+                        <input type="text" name="nomor_induk" class="form-control form-control-sm" placeholder="">
                         </div>
                     </div>
                     <div class="row">
                         <label for="nama" class="col-md-3 col-form-label text-right"><strong>Nama :</strong></label>
                         <div class="col-md-9">
                         <input type="text" name="nama" class="form-control form-control-sm" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="email" class="col-md-3 col-form-label text-right"><strong>Alamat Email :</strong></label>
+                        <div class="col-md-9">
+                        <input type="email" name="email" class="form-control form-control-sm" placeholder="">
                         </div>
                     </div>
                     <div class="row">
@@ -176,12 +180,6 @@
                         <label for="kode_pengajar" class="col-md-3 col-form-label text-right"><strong>Kode Pengajar :</strong></label>
                         <div class="col-md-9">
                         <input type="text" name="kode_pengajar" class="form-control form-control-sm" placeholder="">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label for="userid" class="col-md-3 col-form-label text-right"><strong>User Id :</strong></label>
-                        <div class="col-md-9">
-                        <input type="text" name="userid" class="form-control form-control-sm" placeholder="">
                         </div>
                     </div>
                 </div>

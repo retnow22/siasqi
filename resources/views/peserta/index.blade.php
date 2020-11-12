@@ -45,14 +45,13 @@
                         <th>Level</th>
                         <th>Semester Masuk</th>
                         <th>Status</th>
-                        <!-- <th>USER ID</th> -->
                         <th>Aksi</th>
 
                     </thead>
                     </tr>
                     @foreach($data_peserta as $peserta)
                     <tr>
-                        <td class="text-center"> {{ $peserta -> nis }} </td>
+                        <td class="text-center"> {{ $peserta -> nomor_induk }} </td>
                         <td> {{ $peserta -> nama }} </td>
                         <td class="text-center"> {{ $peserta -> prodi }} </td>
                         <td class="text-center"> {{ $peserta -> fakultas }} </td>
@@ -63,7 +62,6 @@
                         <td class="text-center"> {{ $peserta -> level }} </td>
                         <td class="text-center"> {{ $peserta -> semester_masuk }} </td>
                         <td class="text-center"> {{ $peserta -> status }} </td>
-                        <!-- <td> {{ $peserta -> user_id }} </td> -->
                         <td> 
                         <a href="/peserta/{{$peserta->id}}/edit" class="btn btn-warning btn-xs"><i class="lnr lnr-pencil"></i></a>
                         <a href="/peserta/{{$peserta->id}}/delete" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="lnr lnr-trash"></i></a>                         
@@ -94,9 +92,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        <label for="nis" class="col-md-3 col-form-label text-right"><strong>NIS :</strong></label>
+                        <label for="nomor_induk" class="col-md-3 col-form-label text-right"><strong>NIS :</strong></label>
                         <div class="col-md-9">
-                        <input type="text" name="nis" class="form-control form-control-sm" placeholder="">
+                        <input type="text" name="nomor_induk" class="form-control form-control-sm" placeholder="">
                         </div>
                     </div>
                     <div class="row">
@@ -195,12 +193,6 @@
                                 <option value="Non Aktif">Non Aktif</option>
                                 <option value="Lulus">Lulus</option>
                             </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label for="userid" class="col-md-3 col-form-label text-right"><strong>User Id :</strong></label>
-                        <div class="col-md-9">
-                        <input type="text" name="userid" class="form-control form-control-sm" placeholder="">
                         </div>
                     </div>
                 </div>

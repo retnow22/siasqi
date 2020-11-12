@@ -24,6 +24,7 @@ class RegistrasiController extends Controller
         $user->role = $request->role;
         $user->name = $request->nama;
         $user->email = $request->email;
+        $user->username = $request->nomor_induk;
         $user->password = bcrypt($request->password);
         $user->SetRememberToken( Str::random(60));
         $user->save();
@@ -57,6 +58,7 @@ class RegistrasiController extends Controller
         $user = new \App\Models\User;
         $user->role = $request->role;
         $user->name = $request->nama;
+        $user->username = $request->username;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->SetRememberToken( Str::random(60));
