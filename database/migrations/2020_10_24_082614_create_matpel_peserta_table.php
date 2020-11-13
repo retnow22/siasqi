@@ -17,12 +17,12 @@ class CreateMatpelPesertaTable extends Migration
             $table->id();
             $table->integer('matpel_id')->nullable();
             $table->integer('peserta_id')->nullable();
-            $table->integer('nilai_lisan');
+            $table->integer('nilai_lisan')->nullable();
             $table->integer('nilai_teori')->nullable();
-            $table->integer('nilai_akhir');
-            $table->integer('kkm');
-            $table->string('keterangan');
-            $table->string('penguji');
+            $table->integer('nilai_akhir')->nullable();
+            $table->integer('kkm')->nullable();
+            $table->string('keterangan')->nullable();
+            $table->string('penguji')->nullable();
             $table->string('pertemuan1')->nullable();
             $table->string('pertemuan2')->nullable();
             $table->string('pertemuan3')->nullable();

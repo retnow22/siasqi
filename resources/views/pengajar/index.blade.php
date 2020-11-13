@@ -33,7 +33,7 @@
                 <div class= "table-responsive">
                 <table class="table table-hover table-striped table-bordered">
                     <tr>
-                        <thead class="thead-dark">
+                        <thead>
                             <th>NIP</th>
                             <th>Nama</th>
                             <th>Prodi</th>

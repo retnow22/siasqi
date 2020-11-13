@@ -89,11 +89,20 @@
                             <th>No</th>
                             <th>NIS</th>
                             <th>Nama</th>
-                            <th>Prodi</th>
-                            <th>Fakultas</th>
-                            <th>Instansi</th>
-                            <th>Angkatan</th>
-                            <th>Nomor HP</th>
+                            <th>Prodi/Angkatan</th>
+                            <th>Nomor Hp</th>
+                            <th>Pertemuan 1</th>
+                            <th>Pertemuan 2</th>
+                            <th>Pertemuan 3</th>
+                            <th>Pertemuan 4</th>
+                            <th>Pertemuan 5</th>
+                            <th>Pertemuan 6</th>
+                            <th>Pertemuan 7</th>
+                            <th>Pertemuan 8</th>
+                            <th>Pertemuan 9</th>
+                            <th>Pertemuan 10</th>
+                            <th>Pertemuan 11</th>
+                            <th>Pertemuan 12</th>                            
                             <th>Aksi</th>
                         @elseif( $role == 'Pengajar')
                             <th>No</th>
@@ -118,11 +127,20 @@
                         <td scope="row"> {{ $key + 1 }}</td>
                         <td class="text-center"> {{ $peserta -> nomor_induk }} </td>
                         <td> {{ $peserta -> nama }} </td>
-                        <td class="text-center"> {{ $peserta -> prodi }} </td>
-                        <td class="text-center"> {{ $peserta -> fakultas }} </td>
-                        <td class="text-center"> {{ $peserta -> instansi }} </td>
-                        <td class="text-center"> {{ $peserta -> angkatan }} </td>
+                        <td class="text-center"> {{ $peserta -> prodi }}/ {{ $peserta -> angkatan }} </td>
                         <td class="text-center"> {{ $peserta -> no_hp }} </td>
+                        <td class="text-center"> {{ $peserta->pivot -> pertemuan1 }} </td>
+                        <td class="text-center"> {{ $peserta->pivot -> pertemuan2 }} </td>
+                        <td class="text-center"> {{ $peserta->pivot -> pertemuan3 }} </td>
+                        <td class="text-center"> {{ $peserta->pivot -> pertemuan4 }} </td>
+                        <td class="text-center"> {{ $peserta->pivot -> pertemuan5 }} </td>
+                        <td class="text-center"> {{ $peserta->pivot -> pertemuan6 }} </td>
+                        <td class="text-center"> {{ $peserta->pivot -> pertemuan7 }} </td>
+                        <td class="text-center"> {{ $peserta->pivot -> pertemuan8 }} </td>
+                        <td class="text-center"> {{ $peserta->pivot -> pertemuan9 }} </td>
+                        <td class="text-center"> {{ $peserta->pivot -> pertemuan10 }} </td>
+                        <td class="text-center"> {{ $peserta->pivot -> pertemuan11 }} </td>
+                        <td class="text-center"> {{ $peserta->pivot -> pertemuan12 }} </td>
                         <td>
                         <a href="/nilai/{{$peserta->pivot->id}}/deletepeserta" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="lnr lnr-trash"></i></a>                         
                         </td>
@@ -140,7 +158,7 @@
                         <td class="text-center"> {{ $peserta->pivot->nilai_akhir }} </td>
                         <td class="text-center"> {{ $peserta->pivot->keterangan }} </td>
                         <td> 
-                        <a href="/pengajar/{{$peserta->pivot->id}}/inputnilai" class="btn btn-primary btn-xs">Input Nilai</i></a>                       
+                        <a href="/pengajar/{{$peserta->pivot->id}}/inputnilai" class="btn btn-primary btn-xs">Input Nilai</a>                       
                         </td>
                     @endif
                     </tr>

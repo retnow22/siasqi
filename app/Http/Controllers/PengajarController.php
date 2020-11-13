@@ -114,6 +114,29 @@ class PengajarController extends Controller
         return redirect('/pengajar/'.$id.'/lihatpeserta')->with('sukses','Data nilai berhasil diperbaharui!');
     }
 
+    public function lihatPresensi($id)
+    {
+        $data_peserta = Peserta::all();
+        $matpel = Matpel::all();
+        $rombel = Matpel::find($id);
 
+        return view('presensi.peserta', ['rombel' => $rombel, 'matpel' => $matpel, 'data_peserta' => $data_peserta]);
+    }
+
+    public function inputPresensi($id)
+    {
+        $nilai = Nilai::find($id);
+       
+        return view('presensi.input_presensi', ['nilai' => $nilai]);
+    }
+
+    public function updatePresensi(Request $request, $id)
+    {
+        $nilai = Nilai::find($id);
+
+        $nilai->update($request->all());
+       
+        return redirect('/pengajar/'.$id.'/lihatpresensi')->with('sukses','Data presensi berhasil diperbaharui!');
+    } 
 
 }

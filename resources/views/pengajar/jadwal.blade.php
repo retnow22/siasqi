@@ -75,7 +75,8 @@
                         <td class="text-center"> {{ $pengajar -> level }} </td>
                         <td class="text-center"> {{ $pengajar -> kuota }} </td>
                         <td>
-                        <a href="/pengajar/{{$pengajar->id}}/lihatpeserta" class="btn btn-primary btn-xs">Lihat Peserta</a>   
+                        <a href="/pengajar/{{$pengajar->id}}/lihatpeserta" class="btn btn-primary btn-xs">Lihat Peserta</a>
+                        <a href="/pengajar/{{$pengajar->id}}/lihatpresensi" class="btn btn-primary btn-xs">Input Presensi</a>   
                         </td>
                     </tr>
                     @endforeach

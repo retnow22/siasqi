@@ -33,4 +33,9 @@ class Pengajar extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function presensi()
+    {
+        return $this->hasMany(Presensi::class);
+    }
 }

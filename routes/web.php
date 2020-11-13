@@ -8,6 +8,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\MatpelController;
+use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\PresensiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +57,12 @@ Route::group(['middleware' => ['auth', 'checkRole:Admin']], function(){
     Route::get('/akun/{id}/edit', [RegistrasiController::class, 'editakun']);
     Route::post('/akun/{id}/update', [RegistrasiController::class, 'updateakun']);
     Route::get('/akun/{id}/delete', [RegistrasiController::class, 'deleteakun']);
+    Route::get('/pembayaran', [PembayaranController::class, 'index']);
+    Route::post('/pembayaran/create', [PembayaranController::class, 'create']);
+    Route::get('/pembayaran/{id}/edit', [PembayaranController::class, 'edit']);
+    Route::post('/pembayaran/{id}/update', [PembayaranController::class, 'update']);
+    Route::get('/pembayaran/{id}/delete', [PembayaranController::class, 'delete']);
+    Route::get('/laporan-kbm', [PresensiController::class, 'index']);
 });
 
 Route::group(['middleware' => 'auth'], function(){
@@ -72,6 +80,15 @@ Route::group(['middleware' => ['auth', 'checkRole:Pengajar']], function(){
     Route::get('/pengajar/{id}/jadwal', [PengajarController::class, 'jadwal']);
     Route::get('/pengajar/{id}/inputnilai', [PengajarController::class, 'inputnilai']);
     Route::post('/pengajar/{id}/updatenilai', [PengajarController::class, 'updatenilai']);
+    Route::get('/presensi/{id}/input-laporan', [PresensiController::class, 'inputlaporan']);
+    Route::post('/presensi/create', [PresensiController::class, 'create']);
+    Route::get('/presensi/{id}/edit', [PresensiController::class, 'edit']);
+    Route::post('/presensi/{id}/update', [PresensiController::class, 'update']);
+    Route::get('/presensi/{id}/delete', [PresensiController::class, 'delete']);
+    Route::get('/pengajar/{id}/lihatpresensi', [PengajarController::class, 'lihatPresensi']);
+    Route::get('/pengajar/{id}/inputpresensi', [PengajarController::class, 'inputPresensi']);
+    Route::post('/pengajar/{id}/updatepresensi', [PengajarController::class, 'updatePresensi']);
+    
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:Peserta']], function(){
@@ -80,7 +97,10 @@ Route::group(['middleware' => ['auth', 'checkRole:Peserta']], function(){
     Route::post('/peserta/{id}/updateprofil', [PesertaController::class, 'updateprofil']);
     Route::get('/peserta/{id}/rencana-studi', [PesertaController::class, 'rencanastudi']);
     Route::get('/peserta/{id}/daftar-studi', [PesertaController::class, 'daftarstudi']);
-    Route::get('/peserta/{id}/pilihmatpel', [PesertaController::class, 'pilihmatpel']);    
+    Route::get('/peserta/{id}/pilihmatpel', [PesertaController::class, 'pilihmatpel']); 
+    Route::get('/peserta/{id}/pembayaran', [PesertaController::class, 'pembayaran']);
+    Route::get('/peserta/{id}/presensi', [PesertaController::class, 'presensi']);
+       
 });
 
 

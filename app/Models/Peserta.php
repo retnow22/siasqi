@@ -36,6 +36,19 @@ class Peserta extends Model
                 'kkm',
                 'keterangan',
                 'penguji',
+                'pertemuan1',
+                'pertemuan2',
+                'pertemuan3',
+                'pertemuan4',
+                'pertemuan5',
+                'pertemuan6',
+                'pertemuan7',
+                'pertemuan8',
+                'pertemuan9',
+                'pertemuan10',
+                'pertemuan11',
+                'pertemuan12',
+                'evaluasi',
                 ]);
     }
 
@@ -47,6 +60,11 @@ class Peserta extends Model
     public function nilai()
     {
         return $this->hasMany(Nilai::class);
+    }
+
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::class);
     }
 
 }

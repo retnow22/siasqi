@@ -113,4 +113,19 @@ class PesertaController extends Controller
         return view('peserta.daftar_studi', ['peserta' => $peserta]);
 
     }
+
+    public function pembayaran($id)
+    {
+        $pembayaran_peserta = Peserta::find($id);
+
+        return view('peserta.pembayaran', ['pembayaran_peserta' => $pembayaran_peserta]);
+    }
+
+    public function presensi($id)
+    {
+        $presensi = Peserta::find($id);
+        // dd($nilai_peserta);
+
+        return view('peserta.presensi', ['presensi' => $presensi]);
+    }
 }
