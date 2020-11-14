@@ -72,7 +72,7 @@
                     <td class="text-center"> {{ $peserta->pivot -> kkm }} </td>
                     <td class="text-center"> {{ $peserta->pivot -> keterangan }} </td>
                     <td class="text-center">
-                    <a href="#" class="btn btn-primary btn-xs" onclick="return confirm('Cetak nilai')"><i class="ace-icon fa fa-print"></i></a>                         
+                    <a href="/peserta/{{$peserta->pivot->id}}/cetak-nilai" class="btn btn-primary btn-xs" onclick="return confirm('Cetak nilai')"><i class="ace-icon fa fa-print"></i></a>                         
                     </td>
                 </tr>
                 @endforeach

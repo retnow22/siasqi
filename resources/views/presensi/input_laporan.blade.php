@@ -79,7 +79,7 @@
                     </tr>
                     @foreach($pengajar->presensi as $pengajar)
                     <tr>
-                        <td class="text-center"> {{ $pengajar->matpel -> semester }} </td>
+                        <td class="text-center"> {{ $pengajar-> semester }} </td>
                         <td class="text-center"> {{ $pengajar->matpel -> kode }} </td>
                         <td> {{ $pengajar->matpel -> nama }} </td>
                         <td class="text-center"> {{ $pengajar-> pertemuan_ke }} </td>
@@ -115,7 +115,7 @@
         <form action="/presensi/create" method="POST" >
             @csrf
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12">   
                     <div class="row">
                     <label for="matpel_id" class="col-md-3 col-form-label text-right"><strong>Mata Pelajaran :</strong></label>
                         <div class="col-md-9">

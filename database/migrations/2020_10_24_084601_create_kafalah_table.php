@@ -18,6 +18,7 @@ class CreateKafalahTable extends Migration
             $table->string('semester');
             $table->integer('pengajar_id');
             $table->integer('jumlah_mengajar');
+            $table->integer('badal')->nullable();
             $table->integer('nominal');
             $table->integer('total_pembayaran');
             $table->timestamps();

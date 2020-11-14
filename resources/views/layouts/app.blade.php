@@ -45,8 +45,7 @@
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright"><i class="fa fa-copyright"></i> Quran Institute UNJ 2020 - Template by <a href="https://bootstrapthemes.co">BootstrapThemes</a>
-</p>
+				<p class="copyright"><i class="fa fa-copyright"></i> Quran Institute UNJ 2020 - Template by <a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
 			</div>
 		</footer>
 	</div>
@@ -57,7 +56,6 @@
 	<script src="{{asset('admin/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 	<script src="{{asset('admin/assets/scripts/klorofil-common.js')}}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
 	<script type="text/javascript">
     $('#datepicker').datepicker({
         weekStart: 1,
@@ -65,8 +63,8 @@
         autoclose: true,
         todayHighlight: true,
     });
-    $('#datepicker').datepicker("setDate", new Date());
-</script>
+	$('#datepicker').datepicker("setDate", new Date());
+	</script>
 </body>
 
 </html>

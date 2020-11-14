@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 Use App\Models\Peserta;
 Use App\Models\Pengajar;
+Use App\Models\Kafalah;
 
 
 
@@ -33,12 +34,19 @@ class RegistrasiController extends Controller
         if($request->role == 'Pengajar'){
             $request->request->add(['user_id'=>$user->id ]);
             $pengajar = Pengajar::create($request->all());
+            $kafalah = Kafalah::create([
+                'pengajar_id'=>$pengajar->id
+            ]);
+
+        //insert ke table Kafalah
 
         }
         //insert ke table Peserta
         else if($request->role == 'Peserta'){
             $request->request->add(['user_id'=>$user->id ]);
             $peserta = Peserta::create($request->all());
+
+        
           
         }
 

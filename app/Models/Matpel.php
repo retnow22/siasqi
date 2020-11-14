@@ -59,4 +59,9 @@ class Matpel extends Model
     {
         return $this->belongsTo(Pengajar::class);
     }
+
+    public function presensi()
+    {
+        return $this->hasMany(Presensi::class);
+    }
 }

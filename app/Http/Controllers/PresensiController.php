@@ -42,7 +42,12 @@ class PresensiController extends Controller
     {
         $idpengajar = auth()->user()->pengajar->id;
 
+        $matpel = Matpel::find($request->matpel_id);
+
+        $semester = $matpel->semester;
+
         $presensi = Presensi::create([
+            'semester' =>$semester,
             'matpel_id'=>$request->matpel_id,
             'pengajar_id'=>$idpengajar,
             'tanggal'=>$request->tanggal,

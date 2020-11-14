@@ -10,6 +10,8 @@ use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\MatpelController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PresensiController;
+use App\Http\Controllers\InformasiController;
+use App\Http\Controllers\KafalahController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +65,16 @@ Route::group(['middleware' => ['auth', 'checkRole:Admin']], function(){
     Route::post('/pembayaran/{id}/update', [PembayaranController::class, 'update']);
     Route::get('/pembayaran/{id}/delete', [PembayaranController::class, 'delete']);
     Route::get('/laporan-kbm', [PresensiController::class, 'index']);
+    Route::get('/informasi', [InformasiController::class, 'index']);
+    Route::post('/informasi/create', [InformasiController::class, 'create']);
+    Route::get('/informasi/{id}/edit', [InformasiController::class, 'edit']);
+    Route::post('/informasi/{id}/update', [InformasiController::class, 'update']);
+    Route::get('/informasi/{id}/delete', [InformasiController::class, 'delete']);
+    Route::get('/kafalah', [KafalahController::class, 'index']);
+    Route::post('/kafalah/create', [KafalahController::class, 'create']);
+    Route::get('/kafalah/{id}/edit', [KafalahController::class, 'edit']);
+    Route::post('/kafalah/{id}/update', [KafalahController::class, 'update']);
+    Route::get('/kafalah/{id}/delete', [KafalahController::class, 'delete']);    
 });
 
 Route::group(['middleware' => 'auth'], function(){
@@ -100,6 +112,7 @@ Route::group(['middleware' => ['auth', 'checkRole:Peserta']], function(){
     Route::get('/peserta/{id}/pilihmatpel', [PesertaController::class, 'pilihmatpel']); 
     Route::get('/peserta/{id}/pembayaran', [PesertaController::class, 'pembayaran']);
     Route::get('/peserta/{id}/presensi', [PesertaController::class, 'presensi']);
+    Route::get('/peserta/{id}/cetak-nilai', [PesertaController::class, 'cetaknilai']);
        
 });
 

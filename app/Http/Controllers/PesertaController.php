@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 Use App\Models\Peserta;
 Use App\Models\Matpel;
+Use App\Models\Nilai;
+Use PDF;
 
 class PesertaController extends Controller
 {
@@ -127,5 +129,17 @@ class PesertaController extends Controller
         // dd($nilai_peserta);
 
         return view('peserta.presensi', ['presensi' => $presensi]);
+    }
+
+    public function cetaknilai($id)
+    {
+        $nilai = Nilai::find($id);
+
+        $peserta = $nilai->peserta;
+  
+        $pdf = PDF::loadView('peserta.cetak_nilai', ['nilai' => $nilai, 'peserta' => $peserta]);
+        
+        return $pdf->stream('KHS '.$nilai->matpel->semester.' ('.$peserta->nomor_induk.' - '.$peserta->nama.') .pdf');
+
     }
 }

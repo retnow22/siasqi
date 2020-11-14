@@ -38,4 +38,9 @@ class Pengajar extends Model
     {
         return $this->hasMany(Presensi::class);
     }
+
+    public function kafalah()
+    {
+        return $this->hasMany(Kafalah::class);
+    }
 }

@@ -12,6 +12,7 @@ class Presensi extends Model
     protected $table = 'presensi';
 
     protected $fillable = [
+        'semester',
         'matpel_id',
         'pengajar_id',
         'tanggal',

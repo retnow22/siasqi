@@ -20,6 +20,15 @@
                     <li><a href="/nilai"><i class="fa fa-graduation-cap"></i> <span>Nilai UAS</span></a></li>
                     <li><a href="/kafalah"><i class="fa fa-envelope"></i> <span>Kafalah Pengajar</span></a></li>
                     <li><a href="/pembayaran"><i class="fa fa-money"></i> <span>Data Pembayaran Peserta</span></a></li>
+                    <li>
+                        <a href="#kelolaWidget" data-toggle="collapse" class="collapsed"><i class="fa fa-newspaper-o"></i> <span>Kelola Widget</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                        <div id="kelolaWidget" class="collapse ">
+                            <ul class="nav">
+                                <li><a href="/informasi" class="">Home Widget</a></li>
+                                <li><a href="/informasi" class="">Statistik</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 @elseif(auth()->user()->role == 'Pengajar')
                     <li><a href="/pengajar/{{auth()->user()->pengajar->id}}/profil"><i class="fa fa-user-circle-o"></i> <span>Profil</span></a></li>
                     <li><a href="/pengajar/{{auth()->user()->pengajar->id}}/jadwal"><i class="fa fa-calendar-o"></i> <span>Jadwal Mengajar</span></a></li>
