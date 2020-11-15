@@ -77,6 +77,12 @@
                     </div>
                 </div>
                 <div class="row">
+                    <label for="grup" class="col-md-3 col-form-label text-right"><strong>Grup Kelas :</strong></label>
+                    <div class="col-md-9">
+                    <input type="text" name="grup" value="{{$matpel->grup}}" class="form-control form-control-sm" placeholder="">
+                    </div>
+                </div>
+                <div class="row">
                 <label for="pengajar_id" class="col-md-3 col-form-label text-right"><strong>Nama Pengajar :</strong></label>
                     <div class="col-md-9">
                         <select id="pengajar_id" class="form-control form-control-sm" name="pengajar_id" required>

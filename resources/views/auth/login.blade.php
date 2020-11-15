@@ -53,7 +53,7 @@
 						<div class="overlay"></div>
 						<div class="content text">
 							<h1 class="heading">Sistem Informasi Akademik SQI</h1>
-							<p>Quran Institute UNJ</p>
+							<p>LSO Quran Institute UNJ</p>
 						</div>
 					</div>
 					<div class="clearfix"></div>

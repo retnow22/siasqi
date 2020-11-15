@@ -48,6 +48,14 @@ class PesertaController extends Controller
     public function update(Request $request, $id)
     {
         $peserta = Peserta::find($id);
+
+        $userid = $peserta->user->id;
+
+        $user = \App\Models\User::find($userid);
+
+        $user->update([
+           'name' => $request->nama, 
+        ]);
        
         $peserta->update($request->all());
        
@@ -80,12 +88,22 @@ class PesertaController extends Controller
 
     public function updateprofil($id, Request $request)
     {
+        $idpeserta = auth()->user()->peserta->id;
+
         $peserta = Peserta::find($id);
-      
+
+        $userid = auth()->user()->id;
+
+        $user = \App\Models\User::find($userid);
+
+        $user->update([
+           'name' => $request->nama, 
+        ]);
+        
         $peserta->update($request->all());
   
-        return view('peserta.profil', ['peserta'=> $peserta])
-                        ->with('success','Biodata berhasil diperbarui!');
+        return redirect('/peserta/'.$idpeserta.'/profil')
+                        ->with('sukses','Biodata berhasil diperbarui!');
 
     }
 
@@ -126,7 +144,6 @@ class PesertaController extends Controller
     public function presensi($id)
     {
         $presensi = Peserta::find($id);
-        // dd($nilai_peserta);
 
         return view('peserta.presensi', ['presensi' => $presensi]);
     }
@@ -142,4 +159,17 @@ class PesertaController extends Controller
         return $pdf->stream('KHS '.$nilai->matpel->semester.' ('.$peserta->nomor_induk.' - '.$peserta->nama.') .pdf');
 
     }
+
+    public function inputeval($id, Request $request)
+    {
+        $idpeserta = auth()->user()->peserta->id;
+
+        $evaluasi = Nilai::find($id);
+
+        $evaluasi->update($request->all());
+
+        return redirect('/peserta/'.$idpeserta.'/daftar-studi')
+                ->with('sukses','Evaluasi berhasil diinput!');
+    }
+
 }

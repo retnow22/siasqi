@@ -31,6 +31,8 @@ class KafalahController extends Controller
 
         $jumlah_mengajar = count($kehadiran);
 
+        dd($jumlah_mengajar);
+
         $total_mengajar = $jumlah_mengajar + $request->badal;
        
         $total_pembayaran = $request->nominal * $total_mengajar;

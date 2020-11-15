@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+@if(session('sukses'))
+            <div class="alert alert-success" role="alert">
+            {{session('sukses')}}
+            </div>
+@endif
+@if(session('error'))
+            <div class="alert alert-danger" role="alert">
+            {{session('error')}}
+            </div>
+@endif
 <h5 class="page-title"><i class="fa fa-graduation-cap"></i> Daftar Rencana Studi</h5>
 <div class="row">
     <div class="col-md-12">
@@ -55,6 +65,8 @@
                     <th>Waktu</th>
                     <th>Level</th>
                     <th>Pengajar</th>
+                    <th>Grup Kelas</th>
+                    <th>Aksi</th>                    
                 </thead>
                 </tr>
                 @foreach($peserta->matpel as $peserta)
@@ -66,6 +78,11 @@
                     <td class="text-center"> {{ $peserta -> waktu }} </td>
                     <td class="text-center"> {{ $peserta -> level }} </td>
                     <td class="text-center"> {{ $peserta->pengajar-> nama }} </td>
+                    <td class="text-center"><a href="{{ $peserta -> grup }}"> {{ $peserta -> grup }} </a></td>
+                    <td>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#inputEval">Evaluasi</button>
+                    </td>
                 </tr>
                 @endforeach
             </table>
@@ -77,4 +94,33 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="inputEval" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Evaluasi Kegiatan KBM</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form action="/peserta/{{$peserta->pivot->id}}/inputeval" method="POST" >
+            @csrf            
+            <div class="row">
+                <label for="evaluasi" class="col-md-3 col-form-label text-right"><strong>Evaluasi :</strong></label>
+                <div class="col-md-9">
+                <textarea class="form-control form-control-sm" name="evaluasi" placeholder="" rows="5"></textarea>
+                </div>
+            </div>             
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-sm btn-primary">kirim</button>
+    </div>
+    </form>
+    </div>
+</div>
+</div>
+
 @endsection

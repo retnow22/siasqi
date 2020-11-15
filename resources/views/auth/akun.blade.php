@@ -20,7 +20,15 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-10"></div>
+                <div class="col-md-3">
+                    <div class="row ">
+                        <form class="form-inline my-2 my-lg-0" method="GET" action="/lihatakun">
+                        <input class="form-control " name="cari" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success " type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-7"></div>
                 <div class="col-md-2">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">

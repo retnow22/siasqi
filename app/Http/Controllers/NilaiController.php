@@ -99,4 +99,13 @@ class NilaiController extends Controller
        
         return redirect('/pengajar/'.$peserta->matpel_id.'/lihatpeserta')->with('sukses','Peserta berhasil dihapus!');
     }
+
+    public function rekapeval()
+    {
+        $evaluasi_pengajar = Matpel::where('evaluasi', '>', '1')->get();
+
+        $evaluasi_peserta = Nilai::where('evaluasi', '>', '1')->get();
+
+        return view('informasi.evaluasi', ['evaluasi_pengajar' => $evaluasi_pengajar, 'evaluasi_peserta' => $evaluasi_peserta]);
+    }
 }

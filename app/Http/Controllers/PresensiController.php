@@ -11,15 +11,19 @@ class PresensiController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->has('cari')){
-            $data_pengajar = Pengajar::where('nama', 'LIKE','%'.$request->cari.'%')->get();
+        if($request->has('cari')){                
+            $cari = Pengajar::where('nama', 'LIKE','%'.$request->cari.'%')->get();
+
+            $pengajar_id = $cari->id;
+
+            $presensi = Presensi::where('pengajar_id', 'LIKE','%'.$cari->id.'%')->get();
         }else {
-            $data_pengajar = Pengajar::all();            
+            $presensi = Presensi::all();
         }
 
             $matpel = Matpel::all();
 
-            $presensi = Presensi::all();
+            $data_pengajar = Pengajar::all();
              
         return view('presensi.index', ['data_pengajar' => $data_pengajar, 'matpel' => $matpel, 'presensi' => $presensi]);
     }
@@ -34,8 +38,13 @@ class PresensiController extends Controller
 
             $pengajar = Pengajar::find($id);
             $matpel = $pengajar->matpel;
+
+            // $data_pengajar = Pengajar::all();
+            // $pembadal = $pengajar->presensi->where('pembadal_id', '>', '0');
+            // dd($pembadal_id);
+            // $nama_pembadal = Pengajar::find($pembadal_id);
              
-        return view('presensi.input_laporan', ['data_matpel' => $data_matpel, 'pengajar' => $pengajar, 'matpel'=>$matpel]);
+        return view('presensi.input_laporan', ['data_matpel' => $data_matpel, 'pengajar' => $pengajar, 'matpel'=>$matpel, 'data_pengajar'=>$data_pengajar, 'nama_pembadal'=>$nama_pembadal]);
     }
     
     public function create(Request $request)
@@ -52,7 +61,8 @@ class PresensiController extends Controller
             'pengajar_id'=>$idpengajar,
             'tanggal'=>$request->tanggal,
             'pertemuan_ke'=>$request->pertemuan_ke,
-            'kehadiran'=>$request->kehadiran,
+            'kehadiran'=>$request->kehadiran,            
+            'pembadal_id'=>$request->pembadal_id,
             'materi'=>$request->materi,
             'keterangan'=>$request->keterangan,
         ]);

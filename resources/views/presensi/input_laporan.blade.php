@@ -71,6 +71,7 @@
                         <th>Pertemuan ke</th>
                         <th>Tanggal</th>
                         <th>Kehadiran</th>
+                        <th>Pembadal</th>
                         <th>Materi</th>
                         <th>Keterangan</th>
                         <th>Aksi</th>
@@ -85,6 +86,7 @@
                         <td class="text-center"> {{ $pengajar-> pertemuan_ke }} </td>
                         <td class="text-center"> {{ $pengajar-> tanggal }} </td>
                         <td class="text-center"> {{ $pengajar-> kehadiran }} </td>
+                        <td> {{ $nama_pembadal }} </td>
                         <td> {{ $pengajar-> materi }} </td>
                         <td> {{ $pengajar-> keterangan }} </td>
                         <td> 
@@ -164,6 +166,17 @@
                             </select>
                         </div>
                     </div>
+                    <div class="row">
+                    <label for="pembadal_id" class="col-md-3 col-form-label text-right"><strong>Pembadal :</strong></label>
+                        <div class="col-md-9">
+                            <select id="pembadal_id" class="form-control form-control-sm" name="pembadal_id" required>
+                            <option value="" selected>pilih</option>
+                            @foreach($data_pengajar as $dp)
+                                <option value="{{$dp->id}}">({{$dp->nomor_induk}})-({{$dp->kode_pengajar}})-{{$dp->nama}}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                    </div>   
                     <div class="row">
                         <label for="materi" class="col-md-3 col-form-label text-right"><strong>Materi :</strong></label>
                         <div class="col-md-9">

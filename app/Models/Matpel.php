@@ -19,6 +19,8 @@ class Matpel extends Model
         'waktu',
         'level',
         'kuota',
+        'grup',
+        'evaluasi',
         'pengajar_id',
         'peserta_id',
     ];

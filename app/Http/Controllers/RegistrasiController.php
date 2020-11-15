@@ -34,9 +34,6 @@ class RegistrasiController extends Controller
         if($request->role == 'Pengajar'){
             $request->request->add(['user_id'=>$user->id ]);
             $pengajar = Pengajar::create($request->all());
-            $kafalah = Kafalah::create([
-                'pengajar_id'=>$pengajar->id
-            ]);
 
         //insert ke table Kafalah
 
@@ -54,10 +51,14 @@ class RegistrasiController extends Controller
 
     }
 
-    public function lihatakun()
+    public function lihatakun(Request $request)
     {
-        $user = \App\Models\User::all();
-
+        if($request->has('cari')){
+            $user = \App\Models\User::where('name', 'LIKE','%'.$request->cari.'%')->get();
+        }else {
+            $user = \App\Models\User::all();           
+        }
+        
         return view('auth.akun',['user' => $user]);
     }
 

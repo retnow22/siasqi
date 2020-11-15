@@ -52,6 +52,8 @@
                         <dd class="col-sm-8">{{$rombel->hari}}</dd>
                         <dt class="col-sm-4 text-right">Waktu :</dt>
                         <dd class="col-sm-8">{{$rombel->waktu}}</dd>
+                        <dt class="col-sm-4 text-right">Grup Kelas :</dt>
+                        <dd class="col-sm-8"><a href="{{$rombel->grup}}">{{$rombel->grup}}</a></dd>
                     @elseif( $role == 'Pengajar')
                         <dt class="col-sm-4 text-right">Semester :</dt>
                         <dd class="col-sm-8">{{$rombel->semester}}</dd>
@@ -63,24 +65,31 @@
                         <dd class="col-sm-8">{{$rombel->hari}}</dd>
                         <dt class="col-sm-4 text-right">Waktu :</dt>
                         <dd class="col-sm-8">{{$rombel->waktu}}</dd>
+                        <dt class="col-sm-4 text-right">Grup Kelas :</dt>
+                        <dd class="col-sm-8"><a href="{{$rombel->grup}}">{{$rombel->grup}}</a></dd>
                     @endif
                     </div>
                     </div>
                 </dl>
             </p>
-            @if($role == 'Admin')
             <div class="row">
-                <div class="col-md-2">                    
+                <div class="col-md-2">
+                    @if($role == 'Admin')                    
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNilai">
                     <i class="fa fa-plus"></i> Tambah Peserta
-                    </button>          
+                    </button>
+                    @elseif($role == 'Pengajar')   
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#inputEval">
+                     Evaluasi
+                    </button> 
+                    @endif      
                 </div>
                 <div class="col-md-10">
                 </div>
             </div>
             <br>
-            @endif
                 <div class= "table-responsive">
                 <table class="table table-hover table-striped table-bordered">
                     <tr>
@@ -225,6 +234,39 @@
     </div>
 </div>
 </div>
+
+
+ <!-- Modal -->
+ <div class="modal fade" id="inputEval" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Evaluasi Kegiatan KBM</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form action="/pengajar/{{$rombel->id}}/inputeval" method="POST" >
+            @csrf            
+            <div class="row">
+                <label for="evaluasi" class="col-md-3 col-form-label text-right"><strong>Evaluasi :</strong></label>
+                <div class="col-md-9">
+                <textarea class="form-control form-control-sm" name="evaluasi" placeholder="" rows="5"></textarea>
+                </div>
+            </div>             
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-sm btn-warning">Kirim</button>
+    </div>
+    </form>
+    </div>
+</div>
+</div>
+
+
 
 
 @stop

@@ -12,7 +12,6 @@
                         <div id="subPages" class="collapse ">
                             <ul class="nav">
                                 <li><a href="/jadwal" class="">Data Mata Pelajaran</a></li>
-                                <li><a href="/presensi-peserta" class="">Presensi Peserta</a></li>
                                 <li><a href="/laporan-kbm" class="">Data Laporan KBM</a></li>
                             </ul>
                         </div>
@@ -25,10 +24,10 @@
                         <div id="kelolaWidget" class="collapse ">
                             <ul class="nav">
                                 <li><a href="/informasi" class="">Home Widget</a></li>
-                                <li><a href="/informasi" class="">Statistik</a></li>
                             </ul>
                         </div>
                     </li>
+                    <li><a href="/evaluasi"><i class="fa fa-archive"></i> <span>Rekap Evaluasi</span></a></li>
                 @elseif(auth()->user()->role == 'Pengajar')
                     <li><a href="/pengajar/{{auth()->user()->pengajar->id}}/profil"><i class="fa fa-user-circle-o"></i> <span>Profil</span></a></li>
                     <li><a href="/pengajar/{{auth()->user()->pengajar->id}}/jadwal"><i class="fa fa-calendar-o"></i> <span>Jadwal Mengajar</span></a></li>

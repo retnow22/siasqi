@@ -33,7 +33,7 @@
         <!-- Date Picker -->
     </head>
     <body>
-    <nav class="navbar navbar-container-md navbar-dark bg-dark">
+    <nav class="navbar navbar-container-md navbar-dark bg-primary">
             <div class="container-fluid">  
                     <a class="navbar-brand">
                         PENDAFTARAN SIASQI UNJ

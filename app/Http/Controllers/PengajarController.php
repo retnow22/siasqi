@@ -49,6 +49,11 @@ class PengajarController extends Controller
     public function update(Request $request, $id)
     {
         $pengajar = Pengajar::find($id);
+        $userid = $pengajar->user->id;
+        $user = \App\Models\User::find($userid);
+        $user->update([
+           'name' => $request->nama, 
+        ]);
        
         $pengajar->update($request->all());
        
@@ -73,12 +78,17 @@ class PengajarController extends Controller
 
     public function updateprofil($id, Request $request)
     {
+        $idpengajar = auth()->user()->pengajar->id;
         $pengajar = Pengajar::find($id);
-        // dd($request->all());
+        $userid = auth()->user()->id;
+        $user = \App\Models\User::find($userid);
+        $user->update([
+           'name' => $request->nama, 
+        ]);
         $pengajar->update($request->all());
   
-        return view('pengajar.profil', ['pengajar'=> $pengajar])
-                        ->with('success','Biodata berhasil diperbarui!');
+        return redirect('/pengajar/'.$idpengajar.'/profil')
+                        ->with('sukses','Biodata berhasil diperbarui!');
 
     }
 
@@ -111,7 +121,7 @@ class PengajarController extends Controller
 
         $nilai->update($request->all());
        
-        return redirect('/pengajar/'.$id.'/lihatpeserta')->with('sukses','Data nilai berhasil diperbaharui!');
+        return redirect('/pengajar/'.$nilai->matpel->id.'/lihatpeserta')->with('sukses','Data nilai berhasil diperbaharui!');
     }
 
     public function lihatPresensi($id)
@@ -132,11 +142,23 @@ class PengajarController extends Controller
 
     public function updatePresensi(Request $request, $id)
     {
+
         $nilai = Nilai::find($id);
 
         $nilai->update($request->all());
        
-        return redirect('/pengajar/'.$id.'/lihatpresensi')->with('sukses','Data presensi berhasil diperbaharui!');
+        return redirect('/pengajar/'.$nilai->matpel->id.'/lihatpresensi')->with('sukses','Data presensi berhasil diperbaharui!');
     } 
+
+    public function inputeval($id, Request $request)
+    {
+        $idpengajar = auth()->user()->pengajar->id;
+
+        $evaluasi = Matpel::find($id);
+
+        $evaluasi->update($request->all());
+
+        return redirect('/pengajar/'.$idpengajar.'/jadwal')->with('sukses','Evaluasi berhasil ditambahkan!');
+    }
 
 }
