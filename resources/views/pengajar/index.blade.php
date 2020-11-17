@@ -23,17 +23,18 @@
                 <div class="col-md-3">
                 <div class="row ">
                     <form class="form-inline my-2 my-lg-0" method="GET" action="/pengajar">
-                    <input class="form-control " name="cari" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control " name="cari" type="search" placeholder="Cari berdasarkan nama" aria-label="Search">
                     <button class="btn btn-outline-success " type="submit"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
                 </div>
-                <div class="col-md-7"></div>
-                <div class="col-md-2">
+                <div class="col-md-6"></div>
+                <div class="col-md-3">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#exampleModal">
                     <i class="fa fa-plus"></i> Tambah Data
-                    </button>          
+                    </button>
+                    <a href="/pengajar/export-excel" class="btn btn-primary btn-xs">Eksport Data</a>          
                 </div>
             </div>
             <br>
@@ -77,6 +78,10 @@
                 </table>
                 </div>
             </div>
+    <br>
+    <br>
+    <br>
+    <center>{{$data_pengajar->links()}}</center>
         </div>
     </div>
     </div>

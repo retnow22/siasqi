@@ -75,7 +75,13 @@ Route::group(['middleware' => ['auth', 'checkRole:Admin']], function(){
     Route::get('/kafalah/{id}/edit', [KafalahController::class, 'edit']);
     Route::post('/kafalah/{id}/update', [KafalahController::class, 'update']);
     Route::get('/kafalah/{id}/delete', [KafalahController::class, 'delete']);
-    Route::get('/evaluasi', [NilaiController::class, 'rekapeval']);    
+    Route::get('/evaluasi', [NilaiController::class, 'rekapeval']);
+    Route::get('/peserta/export-excel', [PesertaController::class, 'exportexcel']);
+    Route::get('/pengajar/export-excel', [PengajarController::class, 'exportexcel']);
+    Route::get('/kafalah/export-excel', [KafalahController::class, 'exportexcel']);
+    Route::get('/pembayaran/export-excel', [PembayaranController::class, 'exportexcel']);
+    Route::get('/rombel/export-excel', [NilaiController::class, 'exportexcel']);
+
 });
 
 Route::group(['middleware' => 'auth'], function(){

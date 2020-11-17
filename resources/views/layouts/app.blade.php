@@ -24,6 +24,13 @@
 </head>
 
 <body>
+<style type="text/css">
+		.pagination li{
+			float: left;
+			list-style-type: none;
+			margin:5px;
+		}
+	</style>
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->

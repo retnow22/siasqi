@@ -20,12 +20,13 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-10"></div>
-                <div class="col-md-2">
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#exampleModal">
                     <i class="fa fa-plus"></i> Tambah Data
                     </button>          
+                    <a href="/pembayaran/export-excel" class="btn btn-primary btn-xs">Eksport Data</a>
                 </div>
             </div>
             <br>
@@ -63,6 +64,10 @@
                 </table>
                 </div>
             </div>
+    <br>
+    <br>
+    <br>
+    <center>{{$data_pembayaran->links()}}</center>
         </div>
     </div>
     </div>

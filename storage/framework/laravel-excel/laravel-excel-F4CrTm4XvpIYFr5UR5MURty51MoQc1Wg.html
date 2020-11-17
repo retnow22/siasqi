@@ -1,17 +1,100 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="en">
 
-@section('content')
-@if(session('sukses'))
-            <div class="alert alert-success" role="alert">
-            {{session('sukses')}}
-            </div>
-@endif
-@if(session('error'))
-            <div class="alert alert-danger" role="alert">
-            {{session('error')}}
-            </div>
-@endif
-<h5 class="page-title"><i class="fa fa-user"></i> Data Peserta</h5>
+<head>
+	<title>SIASQI UNJ</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- VENDOR CSS -->
+	<link rel="stylesheet" href="http://127.0.0.1:8000/admin/assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://127.0.0.1:8000/admin/assets/vendor/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="http://127.0.0.1:8000/admin/assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://127.0.0.1:8000/admin/assets/vendor/linearicons/style.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="http://127.0.0.1:8000/admin/assets/css/main.css">
+	<!-- <link href="http://127.0.0.1:8000/css/app.css" rel="stylesheet"> -->
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<!-- ICONS -->
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="http://127.0.0.1:8000/admin/assets/img/logo.png">
+</head>
+
+<body>
+<style type="text/css">
+		.pagination li{
+			float: left;
+			list-style-type: none;
+			margin:5px;
+		}
+	</style>
+	<!-- WRAPPER -->
+	<div id="wrapper">
+		<!-- NAVBAR -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="brand">
+        <a href="/"><img src="http://127.0.0.1:8000/admin/assets/img/logo.png" width="40" height="35" alt="" class="d-inline-block align-top">SIASQI UNJ</a>
+    </div>
+    <div class="container-fluid">
+        <div class="navbar-btn">
+            <button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
+        </div>
+        <div id="navbar-menu">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Admin1 - Admin</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>		<!-- END NAVBAR -->
+		<!-- LEFT SIDEBAR -->
+		<div id="sidebar-nav" class="sidebar">
+    <div class="sidebar-scroll">
+        <nav>
+            <ul class="nav">
+                <li><a href="/home"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
+                                    <li><a href="/lihatakun"><i class="fa fa-user"></i> <span>Kelola Akun</span></a></li>
+                    <li><a href="/peserta"><i class="fa fa-user"></i> <span>Data Peserta</span></a></li>
+                    <li><a href="/pengajar"><i class="fa fa-user"></i> <span>Data Pengajar</span></a></li>
+                    <li>
+                        <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="fa fa-book"></i> <span>Kelola Jadwal</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                        <div id="subPages" class="collapse ">
+                            <ul class="nav">
+                                <li><a href="/jadwal" class="">Data Mata Pelajaran</a></li>
+                                <li><a href="/laporan-kbm" class="">Data Laporan KBM</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="/nilai"><i class="fa fa-graduation-cap"></i> <span>Nilai UAS</span></a></li>
+                    <li><a href="/kafalah"><i class="fa fa-envelope"></i> <span>Kafalah Pengajar</span></a></li>
+                    <li><a href="/pembayaran"><i class="fa fa-money"></i> <span>Data Pembayaran Peserta</span></a></li>
+                    <li>
+                        <a href="#kelolaWidget" data-toggle="collapse" class="collapsed"><i class="fa fa-newspaper-o"></i> <span>Kelola Widget</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                        <div id="kelolaWidget" class="collapse ">
+                            <ul class="nav">
+                                <li><a href="/informasi" class="">Home Widget</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="/evaluasi"><i class="fa fa-archive"></i> <span>Rekap Evaluasi</span></a></li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>		<!-- END LEFT SIDEBAR -->
+        <!-- MAIN -->
+        <div class="main">
+			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="container-fluid">
+                <h5 class="page-title"><i class="fa fa-user"></i> Data Peserta</h5>
 <div class="row">
     <div class="col-md-12">
     <div class="panel">
@@ -23,7 +106,7 @@
                 <div class="col-md-3">
                 <div class="row ">
                     <form class="form-inline my-2 my-lg-0" method="GET" action="/peserta">
-                    <input class="form-control " name="cari" type="search" placeholder="Cari berdasarkan nama" aria-label="Search">
+                    <input class="form-control " name="cari" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success " type="submit"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
@@ -55,34 +138,46 @@
                         <th>Semester Masuk</th>
                         <th>Status</th>
                         <th>Aksi</th>
+
                     </thead>
                     </tr>
-                    @foreach($data_peserta as $peserta)
-                    <tr>
-                        <td class="text-center"> {{ $peserta -> nomor_induk }} </td>
-                        <td> {{ $peserta -> nama }} </td>
-                        <td class="text-center"> {{ $peserta -> prodi }} </td>
-                        <td class="text-center"> {{ $peserta -> fakultas }} </td>
-                        <td class="text-center"> {{ $peserta -> instansi }} </td>
-                        <td class="text-center"> {{ $peserta -> angkatan }} </td>
-                        <td> {{ $peserta -> no_hp }} </td>
-                        <td class="text-center"> {{ $peserta -> jenis_kelamin }} </td>
-                        <td class="text-center"> {{ $peserta -> level }} </td>
-                        <td class="text-center"> {{ $peserta -> semester_masuk }} </td>
-                        <td class="text-center"> {{ $peserta -> status }} </td>
+                                        <tr>
+                        <td class="text-center"> 000001 </td>
+                        <td> Putri Ahma Niyara </td>
+                        <td class="text-center"> Pendidikan Kimia </td>
+                        <td class="text-center"> FMIPA </td>
+                        <td class="text-center"> UNJ </td>
+                        <td class="text-center"> 2017 </td>
+                        <td> 081900000001 </td>
+                        <td class="text-center"> Perempuan </td>
+                        <td class="text-center"> 5 </td>
+                        <td class="text-center"> 001 </td>
+                        <td class="text-center"> Lulus </td>
                         <td> 
-                        <a href="/peserta/{{$peserta->id}}/edit" class="btn btn-warning btn-xs"><i class="lnr lnr-pencil"></i></a>
-                        <a href="/peserta/{{$peserta->id}}/delete" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="lnr lnr-trash"></i></a>                         
+                        <a href="/peserta/1/edit" class="btn btn-warning btn-xs"><i class="lnr lnr-pencil"></i></a>
+                        <a href="/peserta/1/delete" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="lnr lnr-trash"></i></a>                         
                         </td>
                     </tr>
-                    @endforeach
-                </table>
+                                        <tr>
+                        <td class="text-center"> 000002 </td>
+                        <td> Yani Handayani </td>
+                        <td class="text-center"> Pendidikan Khusus </td>
+                        <td class="text-center"> FIP </td>
+                        <td class="text-center"> UNJ </td>
+                        <td class="text-center"> 2016 </td>
+                        <td> 08190000001 </td>
+                        <td class="text-center"> Perempuan </td>
+                        <td class="text-center"> 6 </td>
+                        <td class="text-center"> 001 </td>
+                        <td class="text-center"> Aktif </td>
+                        <td> 
+                        <a href="/peserta/2/edit" class="btn btn-warning btn-xs"><i class="lnr lnr-pencil"></i></a>
+                        <a href="/peserta/2/delete" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="lnr lnr-trash"></i></a>                         
+                        </td>
+                    </tr>
+                                    </table>
                 </div>
             </div>
-    <br>
-    <br>
-    <br>
-    <center>{{$data_peserta->links()}}</center>
         </div>
     </div>
     </div>
@@ -100,8 +195,7 @@
     </div>
     <div class="modal-body">
         <form action="peserta/create" method="POST" >
-            @csrf
-            <div class="row">
+            <input type="hidden" name="_token" value="M4KEFMazRBIXJv8XnM9Y8k4mEbc9ZQ5MjbiXixW6">            <div class="row">
                 <div class="col-md-12">
                     <div class="row">
                         <label for="nomor_induk" class="col-md-3 col-form-label text-right"><strong>NIS :</strong></label>
@@ -220,4 +314,33 @@
 </div>
 </div>
 
-@stop
+                </div>
+            </div>
+        </div>
+		<!-- END MAIN -->
+		<div class="clearfix"></div>
+		<footer>
+			<div class="container-fluid">
+				<p class="copyright"><i class="fa fa-copyright"></i> Quran Institute UNJ 2020 - Template by <a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
+			</div>
+		</footer>
+	</div>
+	<!-- END WRAPPER -->
+	<!-- Javascript -->
+	<script src="http://127.0.0.1:8000/admin/assets/vendor/jquery/jquery.min.js"></script>
+	<script src="http://127.0.0.1:8000/admin/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="http://127.0.0.1:8000/admin/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="http://127.0.0.1:8000/admin/assets/scripts/klorofil-common.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript">
+    $('#datepicker').datepicker({
+        weekStart: 1,
+        daysOfWeekHighlighted: "6,0",
+        autoclose: true,
+        todayHighlight: true,
+    });
+	$('#datepicker').datepicker("setDate", new Date());
+	</script>
+</body>
+
+</html>

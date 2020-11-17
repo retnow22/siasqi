@@ -11,21 +11,11 @@ class PresensiController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->has('cari')){                
-            $cari = Pengajar::where('nama', 'LIKE','%'.$request->cari.'%')->get();
+        $presensi = Presensi::orderBy('tanggal', 'desc')->paginate(10);
 
-            $pengajar_id = $cari->id;
-
-            $presensi = Presensi::where('pengajar_id', 'LIKE','%'.$cari->id.'%')->get();
-        }else {
-            $presensi = Presensi::all();
-        }
-
-            $matpel = Matpel::all();
-
-            $data_pengajar = Pengajar::all();
-             
-        return view('presensi.index', ['data_pengajar' => $data_pengajar, 'matpel' => $matpel, 'presensi' => $presensi]);
+        $matpel = Matpel::all();
+            
+        return view('presensi.index', ['matpel' => $matpel, 'presensi' => $presensi]);
     }
 
     public function inputlaporan($id, Request $request)
@@ -39,12 +29,9 @@ class PresensiController extends Controller
             $pengajar = Pengajar::find($id);
             $matpel = $pengajar->matpel;
 
-            // $data_pengajar = Pengajar::all();
-            // $pembadal = $pengajar->presensi->where('pembadal_id', '>', '0');
-            // dd($pembadal_id);
-            // $nama_pembadal = Pengajar::find($pembadal_id);
+            $data_pengajar = Pengajar::all();
              
-        return view('presensi.input_laporan', ['data_matpel' => $data_matpel, 'pengajar' => $pengajar, 'matpel'=>$matpel, 'data_pengajar'=>$data_pengajar, 'nama_pembadal'=>$nama_pembadal]);
+        return view('presensi.input_laporan', ['data_matpel' => $data_matpel, 'pengajar' => $pengajar, 'matpel'=>$matpel, 'data_pengajar'=>$data_pengajar]);
     }
     
     public function create(Request $request)
@@ -62,7 +49,7 @@ class PresensiController extends Controller
             'tanggal'=>$request->tanggal,
             'pertemuan_ke'=>$request->pertemuan_ke,
             'kehadiran'=>$request->kehadiran,            
-            'pembadal_id'=>$request->pembadal_id,
+            'pembadal'=>$request->pembadal,
             'materi'=>$request->materi,
             'keterangan'=>$request->keterangan,
         ]);
@@ -73,8 +60,10 @@ class PresensiController extends Controller
     public function edit($id)
     {
         $presensi = Presensi::find($id);
+
+        $data_pengajar = Pengajar::all();
        
-        return view('presensi.edit_laporan', ['presensi' => $presensi]);
+        return view('presensi.edit_laporan', ['presensi' => $presensi, 'data_pengajar' => $data_pengajar]);
     }
 
     public function update(Request $request, $id)

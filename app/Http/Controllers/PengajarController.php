@@ -7,15 +7,17 @@ Use App\Models\Pengajar;
 Use App\Models\Matpel;
 Use App\Models\Peserta;
 Use App\Models\Nilai;
+Use Excel;
+use App\Exports\PengajarExport;
 
 class PengajarController extends Controller
 {
     public function index(Request $request)
     {
         if($request->has('cari')){
-            $data_pengajar = Pengajar::where('nama', 'LIKE','%'.$request->cari.'%')->get();
+            $data_pengajar = Pengajar::where('nama', 'LIKE','%'.$request->cari.'%')->orderBy('jenis_kelamin', 'asc')->orderBy('nama','asc')->paginate(5);
         }else {
-            $data_pengajar = Pengajar::all();            
+            $data_pengajar = Pengajar::orderBy('jenis_kelamin', 'asc')->orderBy('nama','asc')->paginate(10);            
         }
         
         return view('pengajar.index', ['data_pengajar' => $data_pengajar]);
@@ -159,6 +161,11 @@ class PengajarController extends Controller
         $evaluasi->update($request->all());
 
         return redirect('/pengajar/'.$idpengajar.'/jadwal')->with('sukses','Evaluasi berhasil ditambahkan!');
+    }
+
+    public function exportexcel()
+    {
+        return Excel::download(new PengajarExport, 'Data Pengajar.xlsx');
     }
 
 }

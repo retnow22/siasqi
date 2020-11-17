@@ -66,4 +66,5 @@ class Matpel extends Model
     {
         return $this->hasMany(Presensi::class);
     }
+
 }

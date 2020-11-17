@@ -52,13 +52,23 @@
                     <div class="row">
                         <label for="kehadiran" class="col-md-3 col-form-label text-right"><strong>Kehadiran :</strong></label>
                         <div class="col-md-9">
-                            <select id="kehadiran" class="form-control form-control-sm" name="kehadiran" required>
+                            <select id="kehadiran" class="form-control form-control-sm" name="kehadiran" placeholder="{{$presensi->pembadal}}" required>
                                 <option value="Hadir" @if($presensi->kehadiran == 'Hadir') selected @endif>Hadir</option>
                                 <option value="Tidak Hadir" @if($presensi->kehadiran == 'Tidak Hadir') selected @endif>Tidak Hadir</option>
                                 <option value="Dibadalkan" @if($presensi->kehadiran == 'Dibadalkan') selected @endif>Dibadalkan</option>
                             </select>
                         </div>
                     </div>
+                    <div class="row">
+                    <label for="pembadal" class="col-md-3 col-form-label text-right"><strong>Pembadal :</strong></label>
+                        <div class="col-md-9">
+                            <select id="pembadal" class="form-control form-control-sm" name="pembadal" required>
+                            @foreach($data_pengajar as $dp)
+                                <option value="{{$dp->nama}}">({{$dp->nomor_induk}})-({{$dp->kode_pengajar}})-{{$dp->nama}}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                    </div>  
                     <div class="row">
                         <label for="materi" class="col-md-3 col-form-label text-right"><strong>Materi :</strong></label>
                         <div class="col-md-9">

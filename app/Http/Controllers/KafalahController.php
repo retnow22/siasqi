@@ -6,24 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\Kafalah;
 use App\Models\Presensi;
 use App\Models\Pengajar;
+use App\Exports\KafalahExport;
+use Excel;
 
 class KafalahController extends Controller
 {
-    public function index(Request $request){
-        $data_kafalah = Kafalah::all();
-        if($request->has('cari')){
-            $kafalah = Kafalah::where('%'.$data_kafalah->pengajar->nama.'%', 'LIKE','%'.$request->cari.'%')->get();
-        }else {
-            $kafalah = Kafalah::all();            
-        }
+    public function index(){
+
+        $kafalah = Kafalah::orderBy('semester', 'desc')->paginate(10);            
 
         $data_pengajar = Pengajar::all();
         
-        return view('kafalah.index', ['data_kafalah' => $data_kafalah, 'kafalah' => $kafalah, 'data_pengajar' => $data_pengajar]);
+        return view('kafalah.index', ['kafalah' => $kafalah, 'data_pengajar' => $data_pengajar]);
     }
 
     public function create(Request $request)
     {
+        //Menghitung jumlah mengajar
         $pengajar = Presensi::where('semester', 'LIKE', '%'.$request->semester.'%')
         ->where('pengajar_id', 'LIKE','%'.$request->pengajar_id.'%')->get();
 
@@ -31,9 +30,15 @@ class KafalahController extends Controller
 
         $jumlah_mengajar = count($kehadiran);
 
-        dd($jumlah_mengajar);
+        //Menghitung jumlah membadal
+        $nama_pengajar = Pengajar::find($request->pengajar_id)->nama;
 
-        $total_mengajar = $jumlah_mengajar + $request->badal;
+        $membadal = Presensi::where('semester', 'LIKE', '%'.$request->semester.'%')
+        ->where('pembadal', 'LIKE', '%'.$nama_pengajar.'%')->get();
+
+        $jumlah_membadal = count($membadal);
+
+        $total_mengajar = $jumlah_mengajar + $jumlah_membadal;
        
         $total_pembayaran = $request->nominal * $total_mengajar;
 
@@ -41,7 +46,7 @@ class KafalahController extends Controller
             'semester' => $request->semester,
             'pengajar_id' => $request->pengajar_id,
             'jumlah_mengajar' => $jumlah_mengajar,
-            'badal' => $request->badal,
+            'badal' => $jumlah_membadal,
             'nominal' => $request->nominal,
             'total_pembayaran' => $total_pembayaran,
         ]);
@@ -87,5 +92,10 @@ class KafalahController extends Controller
         $kafalah = Kafalah::find($id);
         $kafalah->delete($kafalah);
         return redirect('/kafalah')->with('sukses','Data kafalah pengajar berhasil dihapus!');
+    }
+
+    public function exportexcel()
+    {
+        return Excel::download(new KafalahExport, 'Data Kafalah.xlsx');
     }
 }

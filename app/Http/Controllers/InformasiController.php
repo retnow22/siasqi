@@ -10,7 +10,7 @@ class InformasiController extends Controller
     public function index(Request $request)
     {
 
-        $informasi = Informasi::all();
+        $informasi = Informasi::orderBy('id','desc')->paginate(10);
              
         return view('informasi.index', ['informasi' => $informasi]);
     }

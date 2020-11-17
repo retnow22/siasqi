@@ -86,7 +86,7 @@
                         <td class="text-center"> {{ $pengajar-> pertemuan_ke }} </td>
                         <td class="text-center"> {{ $pengajar-> tanggal }} </td>
                         <td class="text-center"> {{ $pengajar-> kehadiran }} </td>
-                        <td> {{ $nama_pembadal }} </td>
+                        <td> {{ $pengajar-> pembadal }} </td>
                         <td> {{ $pengajar-> materi }} </td>
                         <td> {{ $pengajar-> keterangan }} </td>
                         <td> 
@@ -172,7 +172,7 @@
                             <select id="pembadal_id" class="form-control form-control-sm" name="pembadal_id" required>
                             <option value="" selected>pilih</option>
                             @foreach($data_pengajar as $dp)
-                                <option value="{{$dp->id}}">({{$dp->nomor_induk}})-({{$dp->kode_pengajar}})-{{$dp->nama}}</option>
+                                <option value="{{$dp->nama}}">({{$dp->nomor_induk}})-({{$dp->kode_pengajar}})-{{$dp->nama}}</option>
                             @endforeach
                             </select>
                         </div>

@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+
 @if(session('sukses'))
             <div class="alert alert-success" role="alert">
             {{session('sukses')}}
@@ -23,7 +26,7 @@
                 <div class="col-md-3">
                     <div class="row ">
                         <form class="form-inline my-2 my-lg-0" method="GET" action="/lihatakun">
-                        <input class="form-control " name="cari" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control " name="cari" type="search" placeholder="Cari berdasarkan nama" aria-label="Search">
                         <button class="btn btn-outline-success " type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
@@ -50,7 +53,7 @@
                             <th>Aksi</th>
                         </thead>
                     </tr>
-                    @foreach($user as $user)
+                    @foreach($users as $user)
                     <tr>
                         <td> {{ $user -> name }} </td>
                         <td> {{ $user -> username }} </td>
@@ -65,7 +68,11 @@
                     @endforeach
                 </table>
                 </div>
-            </div>
+            </div>                
+    <br>
+    <br>
+    <br>
+    <center>{{$users->links()}}</center>
         </div>
     </div>
     </div>

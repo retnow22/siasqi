@@ -7,15 +7,17 @@ Use App\Models\Peserta;
 Use App\Models\Matpel;
 Use App\Models\Nilai;
 Use PDF;
+Use Excel;
+use App\Exports\PesertaExport;
 
 class PesertaController extends Controller
 {
     public function index(Request $request)
     {
         if($request->has('cari')){
-            $data_peserta = Peserta::where('nama', 'LIKE','%'.$request->cari.'%')->get();
+            $data_peserta = Peserta::where('nama', 'LIKE','%'.$request->cari.'%')->orderBy('jenis_kelamin', 'asc')->orderBy('nama','asc')->paginate(10);
         }else {
-            $data_peserta = Peserta::all();            
+            $data_peserta = Peserta::orderBy('jenis_kelamin', 'asc')->orderBy('nama','asc')->paginate(10);            
         }
         
         return view('peserta.index', ['data_peserta' => $data_peserta]);
@@ -170,6 +172,11 @@ class PesertaController extends Controller
 
         return redirect('/peserta/'.$idpeserta.'/daftar-studi')
                 ->with('sukses','Evaluasi berhasil diinput!');
+    }
+
+    public function exportexcel()
+    {
+        return Excel::download(new PesertaExport, 'Data Peserta.xlsx');
     }
 
 }

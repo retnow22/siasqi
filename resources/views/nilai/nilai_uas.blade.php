@@ -48,28 +48,32 @@
                         <th>Aksi</th>
                     </thead>
                     </tr>
-                    @foreach($nilai as $nilai)
+                    @foreach($nilai as $n)
                     <tr>
-                        <td>{{ $nilai->matpel->semester }}</td>
-                        <td class="text-center">{{ $nilai->peserta -> nomor_induk }}</td>
-                        <td>{{ $nilai->peserta -> nama }}</td>
-                        <td class="text-center">{{ $nilai->matpel-> kode }}</td>
-                        <td class="text-center">{{ $nilai->matpel-> nama }}</td>
-                        <td class="text-center">{{ $nilai-> nilai_lisan }}</td>
-                        <td> {{ $nilai-> nilai_teori }}</td>
-                        <td class="text-center text-primary"><strong>{{ $nilai-> nilai_akhir }}</strong></td>
-                        <td class="text-center">{{ $nilai-> kkm }}</td>
-                        <td class="text-center">{{ $nilai-> keterangan }}</td>
-                        <td class="text-center">{{ $nilai-> penguji}}</td>
+                        <td>{{ $n->matpel->semester }}</td>
+                        <td class="text-center">{{ $n->peserta -> nomor_induk }}</td>
+                        <td>{{ $n->peserta -> nama }}</td>
+                        <td class="text-center">{{ $n->matpel-> kode }}</td>
+                        <td class="text-center">{{ $n->matpel-> nama }}</td>
+                        <td class="text-center">{{ $n-> nilai_lisan }}</td>
+                        <td> {{ $n-> nilai_teori }}</td>
+                        <td class="text-center text-primary"><strong>{{ $n-> nilai_akhir }}</strong></td>
+                        <td class="text-center">{{ $n-> kkm }}</td>
+                        <td class="text-center">{{ $n-> keterangan }}</td>
+                        <td class="text-center">{{ $n-> penguji}}</td>
                         <td> 
-                        <a href="/nilai/{{$nilai->id}}/edit" class="btn btn-warning btn-xs"><i class="lnr lnr-pencil"></i></a>
-                        <a href="/nilai/{{$nilai->id}}/delete" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="lnr lnr-trash"></i></a>                         
+                        <a href="/nilai/{{$n->id}}/edit" class="btn btn-warning btn-xs"><i class="lnr lnr-pencil"></i></a>
+                        <a href="/nilai/{{$n->id}}/delete" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="lnr lnr-trash"></i></a>                         
                         </td>
                     </tr>
                     @endforeach
                 </table>
                 </div>
             </div>
+    <br>
+    <br>
+    <br>
+    <center>{{$nilai->links()}}</center>
         </div>
     </div>
     </div>

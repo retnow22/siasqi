@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Peserta;
 use App\Models\Pembayaran;
+Use Excel;
+use App\Exports\PembayaranExport;
 
 class PembayaranController extends Controller
 {
@@ -16,7 +18,7 @@ class PembayaranController extends Controller
             $data_peserta = Peserta::all();            
         }
 
-        $data_pembayaran = Pembayaran::all();
+        $data_pembayaran = Pembayaran::orderBy('tgl_pembayaran', 'desc')->paginate(10);
              
         return view('pembayaran.index', ['data_peserta' => $data_peserta, 'data_pembayaran' => $data_pembayaran]);
     }
@@ -52,5 +54,10 @@ class PembayaranController extends Controller
         $pembayaran->delete($pembayaran);
        
         return redirect('/pembayaran')->with('sukses','Data pembayaran berhasil dihapus!');
+    }
+
+    public function exportexcel()
+    {
+        return Excel::download(new PembayaranExport, 'Data Pembayaran Peserta.xlsx');
     }
 }

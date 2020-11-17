@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 Use App\Models\Peserta;
 Use App\Models\Pengajar;
 Use App\Models\Kafalah;
-
+use Illuminate\Support\Facades\DB;
 
 
 class RegistrasiController extends Controller
@@ -54,12 +54,12 @@ class RegistrasiController extends Controller
     public function lihatakun(Request $request)
     {
         if($request->has('cari')){
-            $user = \App\Models\User::where('name', 'LIKE','%'.$request->cari.'%')->get();
+            $users = \App\Models\User::where('name', 'LIKE','%'.$request->cari.'%')->orderBy('name', 'asc')->paginate(10);
         }else {
-            $user = \App\Models\User::all();           
+            $users = \App\Models\User::orderBy('name', 'asc')->paginate(10);           
         }
         
-        return view('auth.akun',['user' => $user]);
+        return view('auth.akun',['users' => $users]);
     }
 
     public function tambahakun(Request $request)

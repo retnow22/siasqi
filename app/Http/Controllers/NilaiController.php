@@ -6,36 +6,21 @@ use Illuminate\Http\Request;
 Use App\Models\Peserta;
 Use App\Models\Matpel;
 Use App\Models\Nilai;
+use App\Exports\RombelExport;
+use Excel;
+
 
 class NilaiController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->has('cari')){
-            $data_peserta = Peserta::where('nama', 'LIKE','%'.$request->cari.'%')->get();
-        }else {
-            $data_peserta = Peserta::all();            
-        }
 
-        // Ceritanya mau bikin filter di selection peserta, jadi kalau diselect mp a, 
-        // maka peserta yang muncul hanya yg mengambil mp tersebut,, tp masih -GAGAL-
-        if($request->has('matpel_id')){
-            $matpelsel = Matpel::find($request->matpel_id);
-    
-            $data_peserta = $matpelsel->peserta();
+        $data_peserta = Peserta::all();  
 
-            dd($data_peserta->all());
+        $matpel = Matpel::all();
 
-            $matpel = Matpel::all();
-
-            $nilai = Nilai::all();
-
-            return view('nilai.nilai_uas', ['data_peserta' => $data_peserta, 'matpel' => $matpel, 'nilai' => $nilai, 'matpelsel' => $matpelsel]);
-        }else{
-            $matpel = Matpel::all();
-
-            $nilai = Nilai::all();
-        }
+        $nilai = Nilai::orderBy('matpel_id', 'desc')->paginate(10);
+        
              
         return view('nilai.nilai_uas', ['data_peserta' => $data_peserta, 'matpel' => $matpel, 'nilai' => $nilai]);
     }
@@ -102,10 +87,15 @@ class NilaiController extends Controller
 
     public function rekapeval()
     {
-        $evaluasi_pengajar = Matpel::where('evaluasi', '>', '1')->get();
+        $evaluasi_pengajar = Matpel::whereNotNull('evaluasi')->get();
 
-        $evaluasi_peserta = Nilai::where('evaluasi', '>', '1')->get();
+        $evaluasi_peserta = Nilai::whereNotNull('evaluasi')->get();
 
         return view('informasi.evaluasi', ['evaluasi_pengajar' => $evaluasi_pengajar, 'evaluasi_peserta' => $evaluasi_peserta]);
+    }
+
+    public function exportexcel()
+    {
+        return Excel::download(new RombelExport, 'Data Rombel.xlsx');
     }
 }

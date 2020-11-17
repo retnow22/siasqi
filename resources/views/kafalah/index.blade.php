@@ -20,12 +20,13 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-10"></div>
-                <div class="col-md-2">
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#exampleModal">
                     <i class="fa fa-plus"></i> Tambah Data
-                    </button>          
+                    </button>
+                    <a href="/kafalah/export-excel" class="btn btn-primary btn-xs">Eksport Data</a>           
                 </div>
             </div>
             <br>
@@ -44,24 +45,28 @@
                             <th>Aksi</th>
                         </thead>
                     </tr>
-                    @foreach($kafalah as $kafalah)
+                    @foreach($kafalah as $k)
                     <tr>
-                        <td> {{ $kafalah -> semester }} </td>
-                        <td> {{ $kafalah->pengajar -> nomor_induk }} </td>
-                        <td> {{ $kafalah->pengajar -> nama }} </td>
-                        <td class="text-center"> {{ $kafalah -> nominal }} </td>
-                        <td class="text-center"> {{ $kafalah -> jumlah_mengajar }} </td>
-                        <td class="text-center"> {{ $kafalah -> badal }} </td>
-                        <td class="text-center"><span class="money"> {{ $kafalah -> total_pembayaran }} </span></td>
+                        <td> {{ $k -> semester }} </td>
+                        <td> {{ $k->pengajar -> nomor_induk }} </td>
+                        <td> {{ $k->pengajar -> nama }} </td>
+                        <td class="text-center"> {{ $k -> nominal }} </td>
+                        <td class="text-center"> {{ $k -> jumlah_mengajar }} </td>
+                        <td class="text-center"> {{ $k -> badal }} </td>
+                        <td class="text-center"><span class="money"> {{ $k -> total_pembayaran }} </span></td>
                         <td>
-                        <a href="/kafalah/{{$kafalah->id}}/edit" class="btn btn-warning btn-xs"><i class="lnr lnr-pencil"></i></a>
-                        <a href="/kafalah/{{$kafalah->id}}/delete" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="lnr lnr-trash"></i></a>                         
+                        <a href="/kafalah/{{$k->id}}/edit" class="btn btn-warning btn-xs"><i class="lnr lnr-pencil"></i></a>
+                        <a href="/kafalah/{{$k->id}}/delete" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="lnr lnr-trash"></i></a>                         
                         </td>
                     </tr>
                     @endforeach
                 </table>
                 </div>
             </div>
+    <br>
+    <br>
+    <br>
+    <center>{{$kafalah->links()}}</center>
         </div>
     </div>
     </div>
@@ -102,12 +107,6 @@
                         <label for="nominal" class="col-md-3 col-form-label text-right"><strong>Nominal :</strong></label>
                         <div class="col-md-9">
                         <input type="text" name="nominal" class="form-control form-control-sm" placeholder="">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label for="badal" class="col-md-3 col-form-label text-right"><strong>Jumlah Membadalkan :</strong></label>
-                        <div class="col-md-9">
-                        <input type="text" name="badal" class="form-control form-control-sm" placeholder="">
                         </div>
                     </div>
                 </div>

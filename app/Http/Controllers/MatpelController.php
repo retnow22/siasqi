@@ -11,9 +11,9 @@ class MatpelController extends Controller
     public function index(Request $request)
     {
         if($request->has('cari')){
-            $data_matpel = Matpel::where('nama', 'LIKE','%'.$request->cari.'%')->get();
+            $data_matpel = Matpel::where('nama', 'LIKE','%'.$request->cari.'%')->orderBy('semester','desc')->paginate(5);
         }else {
-            $data_matpel = Matpel::all();            
+            $data_matpel = Matpel::orderBy('semester','desc')->paginate(10);            
         }
 
         $data_pengajar = Pengajar::all();
