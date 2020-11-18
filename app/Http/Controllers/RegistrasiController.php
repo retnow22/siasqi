@@ -19,7 +19,6 @@ class RegistrasiController extends Controller
 
     public function postregistrasi(Request $request)
     {
-        // dd($request->all());
         //insert ke table Users
         $user = new \App\Models\User;
         $user->role = $request->role;

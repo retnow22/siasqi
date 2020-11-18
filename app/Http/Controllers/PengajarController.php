@@ -54,7 +54,8 @@ class PengajarController extends Controller
         $userid = $pengajar->user->id;
         $user = \App\Models\User::find($userid);
         $user->update([
-           'name' => $request->nama, 
+           'name' => $request->nama,
+           'username' => $request->nomor_induk, 
         ]);
        
         $pengajar->update($request->all());

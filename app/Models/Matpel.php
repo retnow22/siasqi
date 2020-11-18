@@ -22,7 +22,7 @@ class Matpel extends Model
         'grup',
         'evaluasi',
         'pengajar_id',
-        'peserta_id',
+        'jenis_kelamin',
     ];
 
     public function peserta()

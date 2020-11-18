@@ -57,13 +57,18 @@
                     </tr>
                     @foreach($data_matpel as $matpel)
                     <tr>
-                        <td class="text-center"> {{ $matpel -> kode }} </td>
-                        <td> {{ $matpel -> nama }} </td>
+                        <td class="text-center" width="50px"> {{ $matpel -> kode }} </td>
+                        <td> {{ $matpel -> nama }}(@php $jk=$matpel->pengajar->jenis_kelamin @endphp
+                                @if ($jk == 'Laki-laki')
+                                        Ikhwan
+                                    @elseif($jk == 'Perempuan')
+                                        Akhawat
+                                    @endif)  </td>
                         <td class="text-center"> {{ $matpel -> semester }} </td>
                         <td class="text-center"> {{ $matpel -> hari }} </td>
                         <td class="text-center"> {{ $matpel -> waktu }} </td>
                         <td class="text-center"> {{ $matpel -> level }} </td>
-                        <td class="text-center"> {{ $matpel->pengajar-> kode_pengajar }} </td>
+                        <td class="text-center" width="50px"> {{ $matpel->pengajar-> kode_pengajar }} </td>
                         <td> {{ $matpel->pengajar-> nama }} </td>
                         <td class="text-center"> {{ $matpel -> kuota }} </td>
                         <td>

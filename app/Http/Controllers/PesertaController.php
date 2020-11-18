@@ -56,7 +56,8 @@ class PesertaController extends Controller
         $user = \App\Models\User::find($userid);
 
         $user->update([
-           'name' => $request->nama, 
+           'name' => $request->nama,           
+           'username' => $request->nomor_induk, 
         ]);
        
         $peserta->update($request->all());
@@ -113,7 +114,7 @@ class PesertaController extends Controller
     {
         $peserta = Peserta::find($id);
         
-        $matpel = Matpel::where('level','=',$peserta->level)->get();
+        $matpel = Matpel::where('level','=',$peserta->level)->where('jenis_kelamin','=',$peserta->jenis_kelamin)->get();
         
         return view('peserta.rencana-studi', ['peserta' => $peserta, 'matpel' => $matpel]);
 
@@ -122,8 +123,19 @@ class PesertaController extends Controller
     public function daftarstudi($id)
     {
         $peserta = Peserta::find($id);
+        
+ 
+
+        $matpel = Nilai::where('peserta_id','=',$peserta->id)->get();
+
+        $peserta_id = count($matpel);
+
+        if($peserta_id > 0){
 
         return view('peserta.daftar_studi', ['peserta' => $peserta]);
+        };
+        
+        return view('peserta.daftar_kosong');
     }
 
     public function pilihmatpel($id)
