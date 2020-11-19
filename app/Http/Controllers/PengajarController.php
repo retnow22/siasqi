@@ -98,7 +98,6 @@ class PengajarController extends Controller
     public function jadwal($id)
     {
         $jadwal = Pengajar::find($id);
-        // dd($nilai_peserta);
 
         return view('pengajar.jadwal', ['jadwal' => $jadwal]);
     }

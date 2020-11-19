@@ -20,7 +20,7 @@ class AuthController extends Controller
             return redirect('/home');
         }
 
-        return redirect('/login');
+        return redirect('/login')->with('error','*Username atau password salah!');
     }
 
     public function logout()

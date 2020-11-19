@@ -167,10 +167,11 @@
                         </div>
                     </div>
                     <div class="row">
-                    <label for="pembadal_id" class="col-md-3 col-form-label text-right"><strong>Pembadal :</strong></label>
+                    <label for="pembadal" class="col-md-3 col-form-label text-right"><strong>Pembadal :</strong></label>
                         <div class="col-md-9">
-                            <select id="pembadal_id" class="form-control form-control-sm" name="pembadal_id" required>
+                            <select id="pembadal" class="form-control form-control-sm" name="pembadal" required>
                             <option value="" selected>pilih</option>
+                            <option value="-">Tidak dibadal</option>
                             @foreach($data_pengajar as $dp)
                                 <option value="{{$dp->nama}}">({{$dp->nomor_induk}})-({{$dp->kode_pengajar}})-{{$dp->nama}}</option>
                             @endforeach

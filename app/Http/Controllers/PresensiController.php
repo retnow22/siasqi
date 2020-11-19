@@ -20,16 +20,14 @@ class PresensiController extends Controller
 
     public function inputlaporan($id, Request $request)
     {
-        if($request->has('cari')){
-            $data_matpel = Matpel::where('nama', 'LIKE','%'.$request->cari.'%')->get();
-        }else {
-            $data_matpel = Matpel::all();            
-        }
 
-            $pengajar = Pengajar::find($id);
-            $matpel = $pengajar->matpel;
+        $data_matpel = Matpel::all();            
 
-            $data_pengajar = Pengajar::all();
+        $pengajar = Pengajar::find($id);
+        
+        $matpel = $pengajar->matpel;
+
+        $data_pengajar = Pengajar::all();
              
         return view('presensi.input_laporan', ['data_matpel' => $data_matpel, 'pengajar' => $pengajar, 'matpel'=>$matpel, 'data_pengajar'=>$data_pengajar]);
     }

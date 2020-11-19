@@ -42,7 +42,10 @@
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
 									<input type="password" name="password" class="form-control" id="signin-password" placeholder="Password">
-								</div>
+								</div>								
+								@if(session('error'))
+									<p class="text-left text-danger">{{session('error')}}</p>
+								@endif
 								<button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
 							</form>
 							<br>
