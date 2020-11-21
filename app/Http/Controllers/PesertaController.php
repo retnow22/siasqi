@@ -110,13 +110,33 @@ class PesertaController extends Controller
 
     }
 
-    public function rencanastudi($id)
+    public function rencanastudi($id, Request $request)
     {
+        $select_semester = Matpel::all();
+
         $peserta = Peserta::find($id);
+
+        $semester = $request->semester;
+
+        $matpel = $peserta->matpel;
+
+        $matpel_exist = count($matpel->where('semester', '=', $semester));
+
+        if($matpel_exist > 0){
+                
+            return view('peserta.rencana-studi-added');
+
+        }
+
+        if($request->has('semester')){
+
+            $matpel = Matpel::where('semester', '=', $semester)->where('level','=',$peserta->level)->where('jenis_kelamin','=',$peserta->jenis_kelamin)->get();
+
+            return view('peserta.rencana-studi', ['peserta' => $peserta, 'matpel' => $matpel, 'semester' => $semester]);
+        }
+
         
-        $matpel = Matpel::where('level','=',$peserta->level)->where('jenis_kelamin','=',$peserta->jenis_kelamin)->get();
-        
-        return view('peserta.rencana-studi', ['peserta' => $peserta, 'matpel' => $matpel]);
+        return view('peserta.rencana-studi', ['peserta' => $peserta, 'semester' => $semester, 'select_semester' => $select_semester]);
 
     }
 

@@ -19,16 +19,6 @@
             <h3 class="panel-title">Nilai UAS Peserta</h3>
         </div>
         <div class="panel-body">
-            <div class="row">
-                <div class="col-md-10"></div>
-                <div class="col-md-2">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNilai">
-                    <i class="fa fa-plus"></i> Tambah Nilai
-                    </button>          
-                </div>
-            </div>
-            <br>
             <div class="row"> 
                 <div class= "table-responsive">
                 <table class="table table-hover table-striped table-bordered">

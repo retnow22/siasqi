@@ -121,7 +121,28 @@ class PengajarController extends Controller
     {
         $nilai = Nilai::find($id);
 
+        $peserta = $nilai->peserta;
+
         $nilai->update($request->all());
+
+        if($request->keterangan == 'Lulus' && $peserta->level == 6 ){
+            $status_peserta = 'Lulus';
+
+            $peserta->update([
+                'status' => $status_peserta,
+            ]);
+
+        }
+
+
+        if($request->keterangan == 'Lulus' && $peserta->level < 6 ){
+            $level = $peserta->level + 1;
+
+            $peserta->update([
+                'level' => $level,
+            ]);
+
+        }
        
         return redirect('/pengajar/'.$nilai->matpel->id.'/lihatpeserta')->with('sukses','Data nilai berhasil diperbaharui!');
     }

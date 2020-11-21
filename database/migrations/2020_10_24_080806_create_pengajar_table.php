@@ -14,7 +14,6 @@ class CreatePengajarTable extends Migration
     public function up()
     {
         Schema::create('pengajar', function (Blueprint $table) {
-            $value = "000000";
             $table->id();
             $table->string('nomor_induk');
             $table->string('nama');

@@ -43,7 +43,20 @@
         <br>
         <h3 class="text-primary">Pilih Mata Pelajaran</h3>
         <br>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row ">
+                    <form class="form-inline my-2 my-lg-0" method="GET" action="/peserta/{{auth()->user()->peserta->id}}/rencana-studi">
+                    <input class="form-control " name="semester" type="text" placeholder="" aria-label="semester">
+                    <button class="btn btn-outline-success " type="submit">Pilih Semester</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
         <div class="row"> 
+        @php $semester @endphp
+        @if($semester > 0)
             <div class= "table-responsive">
             <table class="table table-hover table-striped table-bordered">
                 <tr>
@@ -68,7 +81,7 @@
                     <td class="text-center"> {{ $matpel-> waktu }} </td>
                     <td class="text-center"> {{ $matpel-> level }} </td>
                     <td class="text-center"> {{ $matpel->pengajar->nama }} </td>
-                    <td class="text-center"> {{ $matpel-> kuota }} </td>
+                    <td class="text-center"> {{ count($matpel ->nilai) }}/{{ $matpel-> kuota }} </td>
                     <td class="text-center">
                     <a href="/peserta/{{$matpel->id}}/pilihmatpel" class="btn btn-primary btn-xs" onclick="return confirm('Pilih mata pelajaran ini')">Pilih</a>                         
                     </td>
@@ -76,6 +89,7 @@
                 @endforeach
             </table>
             </div>
+            @endif
         </div>
         </div>
         </div>

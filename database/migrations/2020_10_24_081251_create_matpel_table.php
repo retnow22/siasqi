@@ -23,7 +23,7 @@ class CreateMatpelTable extends Migration
             $table->integer('level');
             $table->integer('kuota');
             $table->integer('pengajar_id')->nullable();
-            $table->integer('jenis_kelamin')->nullable();
+            $table->string('jenis_kelamin')->nullable();
             $table->longText('evaluasi')->nullable();
             $table->string('grup')->nullable();
             $table->timestamps();

@@ -15,7 +15,7 @@ class CreatePresensiTable extends Migration
     {
         Schema::create('presensi', function (Blueprint $table) {
             $table->id();
-            $table->string('semester');
+            $table->string('semester')->nullable();
             $table->integer('matpel_id');            
             $table->integer('pengajar_id');
             $table->date('tanggal');

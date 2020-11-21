@@ -32,7 +32,7 @@ class NilaiController extends Controller
         $peserta = Peserta::find($request->peserta_id);
         if($peserta->matpel()->where('matpel_id',$request->matpel_id)->exists()){
             return redirect('/nilai')->with('error','Data nilai sudah ada!');
-        };
+        }
         $nilai = Nilai::create($request->all());
         
         return redirect('/nilai')->with('sukses','Data nilai berhasil ditambahkan!');
@@ -66,12 +66,24 @@ class NilaiController extends Controller
     public function addpeserta(Request $request)
     {
         $matpel = Matpel::all();
+
         $data_peserta = Peserta::all();
+        
         $kelompok = Matpel::find($request->matpel_id);
+        
         if($kelompok->peserta()->where('peserta_id',$request->peserta_id)->exists()){
             return redirect('/pengajar/'.$request->matpel_id.'/lihatpeserta')->with('error','Peserta sudah ada!');
         };
+        
         $nilai = Nilai::create($request->all());
+        
+        $matpel_pilih = Matpel::find($request->matpel_id);
+        
+        $isi_kuota = $matpel_pilih->kuota_terisi + 1;
+
+        $matpel_pilih->update([
+            'kuota_terisi' => $isi_kuota,
+        ]);
         
         return redirect('/pengajar/'.$request->matpel_id.'/lihatpeserta')->with('sukses','Peserta berhasil ditambahkan!');
     }
@@ -81,6 +93,14 @@ class NilaiController extends Controller
         $peserta = Nilai::find($id);
 
         $peserta->delete($peserta);
+                
+        $matpel_pilih = Matpel::find($peserta->matpel_id);
+        
+        $kurangi_kuota = $matpel_pilih->kuota_terisi - 1;
+
+        $matpel_pilih->update([
+            'kuota_terisi' => $kurangi_kuota,
+        ]);
        
         return redirect('/pengajar/'.$peserta->matpel_id.'/lihatpeserta')->with('sukses','Peserta berhasil dihapus!');
     }

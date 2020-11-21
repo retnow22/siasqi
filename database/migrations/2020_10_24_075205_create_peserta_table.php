@@ -14,7 +14,6 @@ class CreatePesertaTable extends Migration
     public function up()
     {
         Schema::create('peserta', function (Blueprint $table) {
-            $value = "000000";
             $defstatus = "Aktif";
             $table->id();
             $table->string('nomor_induk');

@@ -30,6 +30,7 @@ class Peserta extends Model
         return $this->belongsToMany(Matpel::class)
             ->withPivot([
                 'id',
+                'matpel_id',
                 'nilai_lisan',
                 'nilai_teori',
                 'nilai_akhir',      
