@@ -19,7 +19,7 @@
                     {{ __('') }}
                         Selamat Datang {{ Auth::user()->name }}
                         <br>
-                        Di Sistem Informasi Akademik Study Quran Intensive LSO Quran Institute UNJ (ALPHA)
+                        Di Sistem Informasi Akademik Study Quran Intensive LSO Quran Institute UNJ
                 </div>
             </div>
         </div>

@@ -190,7 +190,7 @@ class PesertaController extends Controller
   
         $pdf = PDF::loadView('peserta.cetak_nilai', ['nilai' => $nilai, 'peserta' => $peserta]);
         
-        return $pdf->stream('KHS '.$nilai->matpel->semester.' ('.$peserta->nomor_induk.' - '.$peserta->nama.') .pdf');
+        return $pdf->stream('LHS '.$nilai->matpel->semester.' ('.$peserta->nomor_induk.' - '.$peserta->nama.') .pdf');
 
     }
 
@@ -210,5 +210,6 @@ class PesertaController extends Controller
     {
         return Excel::download(new PesertaExport, 'Data Peserta.xlsx');
     }
+
 
 }

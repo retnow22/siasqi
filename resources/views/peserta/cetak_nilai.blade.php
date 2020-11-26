@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>KHS {{$nilai->matpel->semester}} ({{$peserta->nomor_induk}}-{{$peserta->nama}})</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>LHS {{$nilai->matpel->semester}} ({{$peserta->nomor_induk}}-{{$peserta->nama}})</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 	<style type="text/css">
 		table tr td,
-		table tr th{
+		table tr th,{
 			font-size: 9pt;
 		}
 
-        p{
-            font-size: 10pt;
+        table .border-custom{
+            border-bottom-style: double;
+            border-bottom-color: blue;
         }
 
+
     </style>
-<br>
-<br>
-<br>
+<table style="border-bottom: 5px ridge #315cad;">
+    <tr>
+        <td width="100px">
+        <img src="admin/assets/img/logo_salim.png" width="68" height="92">
+        </td>
+        <td class="text-center" width="500px">
+            <h6>
+            LSO QUR’AN INSTITUTE <br>
+            LEMBAGA DAKWAH KAMPUS SAHABAT MUSLIM <br>
+            UNIVERSITAS NEGERI JAKARTA
+            </h6>
+            <p style="font-size: 9px;">
+            Sekretariat: Gedung G Lantai R.307 Kampus A Universitas Negeri Jakarta <br>
+            Jalan Rawamangun Muka Jakarta Timur 13220 <br>
+            Email: lsoqiunj@gmail.com
+            </p>        
+        </td>
+        <td width="100px">
+        <img src="admin/assets/img/logo.png" width="100" height="90">
+        </td>
+    </tr>
+</table>
 <br>    
+<br>
 	<center>
-		<h5>Kartu Hasil Studi</h4>
+		<h5>Lembar Hasil Studi</h5>
     </center>
  <br>
  <br>
@@ -30,7 +53,7 @@
         <tr>
             <td width="100px">
                 <strong>
-                    <p>
+                    <p style="font-size: 12px;">
                     Nama <br>
                     Nomor Induk<br>
                     Prodi/Angkatan<br>
@@ -41,7 +64,7 @@
                 </strong>
             </td>
             <td class="text-left"> 
-                <p>
+                <p style="font-size: 12px;">
                 : {{auth()->user()->peserta->nama}} <br>
                 : {{auth()->user()->peserta->nomor_induk}} <br>
                 : {{auth()->user()->peserta->prodi}}/{{auth()->user()->peserta->angkatan}} <br>
