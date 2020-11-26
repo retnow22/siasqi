@@ -179,7 +179,7 @@
                         <label for="level" class="col-md-3 col-form-label text-right"><strong>Level :</strong></label>
                         <div class="col-md-9">
                             <select id="level" class="form-control form-control-sm" name="level" required>
-                                <option selected>Pilih</option>
+                                <option value="0" selected>Pilih</option>
                                 <option value="1">Pra Tahsin 1</option>
                                 <option value="2">Pra Tahsin 2</option>
                                 <option value="3">Tahsin 1</option>

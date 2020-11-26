@@ -21,7 +21,7 @@ class CreatePresensiTable extends Migration
             $table->date('tanggal');
             $table->string('pertemuan_ke');
             $table->string('kehadiran');            
-            $table->integer('pembadal')->nullable();
+            $table->string('pembadal')->nullable();
             $table->string('materi');
             $table->string('keterangan')->nullable();
             $table->timestamps();
