@@ -20,6 +20,17 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('admin/assets/img/logo.png')}}">
 </head>
 
+<style>
+	html, body {
+		background-image: url("admin/assets/img/mni-bg.jpg");
+		height: 100%;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+
+	}
+</style>
+
 <body>
 	<!-- WRAPPER -->
 	<div id="wrapper">
@@ -29,8 +40,8 @@
 					<div class="left">
 						<div class="content">
 							<div class="header">
-								<div class="logo text-center"><img src="{{asset('admin/assets/img/login-logo.png')}}" width="220" height="80" alt=""></div>
-								<p class="lead">Login</p>
+								<div class="logo"><img src="{{asset('admin/assets/img/login-logo2.png')}}" width="175" height="60" alt=""></div>
+								<p class="lead">Selamat anda telah terdaftar! <br> Sistem Informasi Akademik <br> SQI UNJ</p>
 							</div>
 							<form class="form-auth-small" action="postlogin" method="POST">
                                 @csrf
@@ -42,22 +53,16 @@
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
 									<input type="password" name="password" class="form-control" id="signin-password" placeholder="Password">
-								</div>
+								</div>								
+								@if(session('error'))
+									<p class="text-left text-danger">{{session('error')}}</p>
+								@endif
 								<button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
 							</form>
 							<br>
 							<p>Belum punya akun? silakan <a href="/registrasi">Daftar</a></p>
 						</div>
 					</div>
-					<div class="right">
-						<div class="overlay"></div>
-						<div class="content text">
-							<p>"Selamat anda telah terdaftar pada</p>
-							<h1 class="heading">Sistem Informasi Akademik SQI</h1>
-							<p>LSO Quran Institute UNJ"</p>
-						</div>
-					</div>
-					<div class="clearfix"></div>
 				</div>
 			</div>
 		</div>
